@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
@@ -12,8 +13,8 @@ export function HeroSection() {
                 <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
                     <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
                         <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-[70%] lg:max-w-none lg:text-left">
-                            <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 lg:max-w-none xl:text-7xl">If DIY methods scaled, you'd be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
-                            <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we've helped over ten companies achieve breakthrough growth.</p>
+                            <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
+                            <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over ten companies achieve breakthrough growth.</p>
 
                             <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
                                 <Button
@@ -50,137 +51,137 @@ export function HeroSection() {
                                 duration={40}
                                 gap={112}>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/prospectum.png"
                                         alt="Prospectum Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-4 w-fit dark:invert"
                                         src="/images/logos/minnalearn-png.webp"
                                         alt="MinnaLearn Logo"
-                                        height="16"
-                                        width="auto"
+                                        height={16}
+                                        width={100}
                                     />
                                 </div>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-4 w-fit dark:invert"
                                         src="/images/logos/evolver.webp"
                                         alt="Evolver Logo"
-                                        height="16"
-                                        width="auto"
+                                        height={16}
+                                        width={100}
                                     />
                                 </div>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/akamon.webp"
                                         alt="Akamon Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/eemel.png"
                                         alt="Eemel Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-4 w-fit dark:invert"
                                         src="/images/logos/seppo.webp"
                                         alt="Seppo Logo"
-                                        height="16"
-                                        width="auto"
+                                        height={16}
+                                        width={100}
                                     />
                                 </div>
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-7 w-fit dark:invert"
                                         src="/images/logos/elisa.webp"
                                         alt="Elisa Logo"
-                                        height="28"
-                                        width="auto"
+                                        height={28}
+                                        width={140}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-6 w-fit dark:invert"
                                         src="/images/logos/cumucore.webp"
                                         alt="Cumucore Logo"
-                                        height="24"
-                                        width="auto"
+                                        height={24}
+                                        width={120}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/paytrail-png.webp"
                                         alt="Paytrail Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-4 w-fit dark:invert"
                                         src="/images/logos/kamux-png.webp"
                                         alt="Kamux Logo"
-                                        height="16"
-                                        width="auto"
+                                        height={16}
+                                        width={100}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-4 w-fit dark:invert"
                                         src="/images/logos/materialistning-png.webp"
                                         alt="Materialistning Logo"
-                                        height="16"
-                                        width="auto"
+                                        height={16}
+                                        width={100}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/gebwell-png.webp"
                                         alt="Gebwell Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-6 w-fit dark:invert"
                                         src="/images/logos/groweo-png.webp"
                                         alt="Groweo Logo"
-                                        height="24"
-                                        width="auto"
+                                        height={24}
+                                        width={120}
                                     />
                                 </div>
 
                                 <div className="flex">
-                                    <img
+                                    <Image
                                         className="mx-auto h-5 w-fit dark:invert"
                                         src="/images/logos/1001lakes-png.webp"
                                         alt="1001 Lakes Logo"
-                                        height="20"
-                                        width="auto"
+                                        height={20}
+                                        width={120}
                                     />
                                 </div>
                             </InfiniteSlider>
