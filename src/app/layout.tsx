@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Navigation } from "@/components/navigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TGS2025 - Moderni kotisivu Next.js 14 & Tailwind CSS",
-  description: "Moderni verkkosivusto, joka on rakennettu Next.js 14:llä, Tailwind CSS:llä ja shadcn/ui komponenteilla. Valmis integroitavaksi Strapi CMS:n kanssa.",
+  title: "TGS2025 - Moderni kotisivu Next.js 15 & Tailwind CSS",
+  description: "Moderni verkkosivusto, joka on rakennettu Next.js 15:llä, Tailwind CSS:llä ja shadcn/ui komponenteilla. Valmis integroitavaksi Strapi CMS:n kanssa.",
   keywords: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Strapi", "CMS", "TypeScript"],
   authors: [{ name: "TGS2025" }],
   creator: "TGS2025",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tgs2025.fi"),
   openGraph: {
     title: "TGS2025 - Moderni kotisivu",
-    description: "Moderni verkkosivusto Next.js 14:llä ja Tailwind CSS:llä",
+    description: "Moderni verkkosivusto Next.js 15:llä ja Tailwind CSS:llä",
     type: "website",
     locale: "fi_FI",
   },
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navigation />
         {children}
       </body>
     </html>
