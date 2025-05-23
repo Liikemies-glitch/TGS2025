@@ -11,17 +11,17 @@ export function HeroSection() {
             <section>
                 <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
                     <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
-                        <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-                            <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">Tervetuloa <span className="text-blue-600 dark:text-blue-400">TGS2025</span></h1>
-                            <p className="mt-8 max-w-2xl text-pretty text-lg">Moderni verkkosivusto, joka on rakennettu Next.js 15:llä, Tailwind CSS:llä ja shadcn/ui komponenteilla. Valmis integroitavaksi Strapi CMS:n kanssa.</p>
+                        <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-[70%] lg:max-w-none lg:text-left">
+                            <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 lg:max-w-none xl:text-7xl">If DIY methods scaled, you'd be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
+                            <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we've helped over ten companies achieve breakthrough growth.</p>
 
                             <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
                                 <Button
                                     asChild
                                     size="lg"
                                     className="px-5 text-base">
-                                    <Link href="#about">
-                                        <span className="text-nowrap">Aloita tästä</span>
+                                    <Link href="#contact">
+                                        <span className="text-nowrap">Book a meeting</span>
                                     </Link>
                                 </Button>
                                 <Button
@@ -30,8 +30,8 @@ export function HeroSection() {
                                     size="lg"
                                     variant="ghost"
                                     className="px-5 text-base">
-                                    <Link href="#services">
-                                        <span className="text-nowrap">Lue lisää</span>
+                                    <Link href="#case-studies">
+                                        <span className="text-nowrap">View case studies</span>
                                     </Link>
                                 </Button>
                             </div>
@@ -47,14 +47,13 @@ export function HeroSection() {
                         </div>
                         <div className="relative py-6 md:w-[calc(100%-11rem)]">
                             <InfiniteSlider
-                                durationOnHover={20}
                                 duration={40}
                                 gap={112}>
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-5 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                        alt="Nvidia Logo"
+                                        src="/images/logos/prospectum.png"
+                                        alt="Prospectum Logo"
                                         height="20"
                                         width="auto"
                                     />
@@ -63,8 +62,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-4 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/column.svg"
-                                        alt="Column Logo"
+                                        src="/images/logos/minnalearn-png.webp"
+                                        alt="MinnaLearn Logo"
                                         height="16"
                                         width="auto"
                                     />
@@ -72,8 +71,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-4 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/github.svg"
-                                        alt="GitHub Logo"
+                                        src="/images/logos/evolver.webp"
+                                        alt="Evolver Logo"
                                         height="16"
                                         width="auto"
                                     />
@@ -81,8 +80,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-5 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/nike.svg"
-                                        alt="Nike Logo"
+                                        src="/images/logos/akamon.webp"
+                                        alt="Akamon Logo"
                                         height="20"
                                         width="auto"
                                     />
@@ -90,8 +89,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-5 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                        alt="Lemon Squeezy Logo"
+                                        src="/images/logos/eemel.png"
+                                        alt="Eemel Logo"
                                         height="20"
                                         width="auto"
                                     />
@@ -99,8 +98,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-4 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                        alt="Laravel Logo"
+                                        src="/images/logos/seppo.webp"
+                                        alt="Seppo Logo"
                                         height="16"
                                         width="auto"
                                     />
@@ -108,8 +107,8 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-7 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                        alt="Lilly Logo"
+                                        src="/images/logos/elisa.webp"
+                                        alt="Elisa Logo"
                                         height="28"
                                         width="auto"
                                     />
@@ -118,9 +117,69 @@ export function HeroSection() {
                                 <div className="flex">
                                     <img
                                         className="mx-auto h-6 w-fit dark:invert"
-                                        src="https://html.tailus.io/blocks/customers/openai.svg"
-                                        alt="OpenAI Logo"
+                                        src="/images/logos/cumucore.webp"
+                                        alt="Cumucore Logo"
                                         height="24"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-5 w-fit dark:invert"
+                                        src="/images/logos/paytrail-png.webp"
+                                        alt="Paytrail Logo"
+                                        height="20"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-4 w-fit dark:invert"
+                                        src="/images/logos/kamux-png.webp"
+                                        alt="Kamux Logo"
+                                        height="16"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-4 w-fit dark:invert"
+                                        src="/images/logos/materialistning-png.webp"
+                                        alt="Materialistning Logo"
+                                        height="16"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-5 w-fit dark:invert"
+                                        src="/images/logos/gebwell-png.webp"
+                                        alt="Gebwell Logo"
+                                        height="20"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-6 w-fit dark:invert"
+                                        src="/images/logos/groweo-png.webp"
+                                        alt="Groweo Logo"
+                                        height="24"
+                                        width="auto"
+                                    />
+                                </div>
+
+                                <div className="flex">
+                                    <img
+                                        className="mx-auto h-5 w-fit dark:invert"
+                                        src="/images/logos/1001lakes-png.webp"
+                                        alt="1001 Lakes Logo"
+                                        height="20"
                                         width="auto"
                                     />
                                 </div>
