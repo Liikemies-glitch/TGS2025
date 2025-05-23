@@ -1,36 +1,176 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TGS2025 - Moderni kotisivu
 
-## Getting Started
+Moderni verkkosivusto, joka on rakennettu Next.js 14:llä, Tailwind CSS:llä ja shadcn/ui komponenteilla. Valmis integroitavaksi Strapi CMS:n kanssa.
 
-First, run the development server:
+## 🚀 Teknologiastäkki
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Frontend
+- **Next.js 14** - App Router arkkitehtuurilla
+- **React 19** - Uusimmat React ominaisuudet
+- **TypeScript** - Tyyppiturvallisuus
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Korkealaatuiset React komponentit
+
+### Backend & CMS (tuleva)
+- **Strapi v4** - Headless CMS
+- **RESTful API** - Standardoidut API-rajapinnat
+- **GraphQL** - Joustava data-haku
+- **PostgreSQL/MySQL** - Tietokanta
+
+## 🛠️ Kehitysympäristön asennus
+
+### Vaatimukset
+- Node.js 18.17 tai uudempi
+- npm, yarn tai pnpm
+
+### Asennus
+
+1. **Kloonaa repositorio**
+   ```bash
+   git clone <repository-url>
+   cd tgs2025-website
+   ```
+
+2. **Asenna riippuvuudet**
+   ```bash
+   npm install
+   # tai
+   yarn install
+   # tai
+   pnpm install
+   ```
+
+3. **Käynnistä kehitysserveri**
+   ```bash
+   npm run dev
+   # tai
+   yarn dev
+   # tai
+   pnpm dev
+   ```
+
+4. **Avaa selain**
+   Siirry osoitteeseen [http://localhost:3000](http://localhost:3000)
+
+## 📁 Projektin rakenne
+
+```
+tgs2025-website/
+├── src/
+│   ├── app/                 # Next.js 14 App Router
+│   │   ├── globals.css      # Globaalit tyylit
+│   │   ├── layout.tsx       # Root layout
+│   │   └── page.tsx         # Kotisivu
+│   ├── components/
+│   │   └── ui/              # shadcn/ui komponentit
+│   └── lib/
+│       └── utils.ts         # Apufunktiot
+├── public/                  # Staattiset tiedostot
+├── components.json          # shadcn/ui konfiguraatio
+├── tailwind.config.ts       # Tailwind CSS konfiguraatio
+├── tsconfig.json           # TypeScript konfiguraatio
+└── package.json            # Projektin riippuvuudet
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Komponentit
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Projektissa käytetään [shadcn/ui](https://ui.shadcn.com/) komponenttikirjastoa. Asennetut komponentit:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `Button` - Painikkeet
+- `Card` - Kortit sisällön esittämiseen
 
-## Learn More
+### Uusien komponenttien asentaminen
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx shadcn@latest add [komponentti]
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Esimerkiksi:
+```bash
+npx shadcn@latest add dialog
+npx shadcn@latest add form
+npx shadcn@latest add input
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 Ominaisuudet
 
-## Deploy on Vercel
+### ✅ Valmiina
+- Responsiivinen design
+- Dark mode tuki
+- TypeScript tyypitys
+- SEO optimointi (meta tagit)
+- Moderni gradient suunnittelu
+- Smooth scrolling navigaatio
+- Hover efektit ja animaatiot
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔄 Tulossa (Strapi CMS integraatio)
+- Dynaaminen sisällönhallinta
+- Blog toiminnallisuus
+- Käyttäjien hallinta
+- Media kirjasto
+- Multilingual tuki
+- API endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Production deployment
+
+### Vercel (suositeltu)
+1. Pushaa koodi GitHubiin
+2. Yhdistä Vercel tili GitHub repositorioon
+3. Deploy automaattisesti
+
+### Manuaalinen build
+```bash
+npm run build
+npm start
+```
+
+## 🔧 Konfiguraatio
+
+### Tailwind CSS
+Tailwind konfiguraatio löytyy tiedostosta `tailwind.config.ts`. Mukana:
+- Custom väripaletti
+- Dark mode tuki
+- Responsive breakpoints
+
+### TypeScript
+TypeScript konfiguraatio löytyy tiedostosta `tsconfig.json`. Sisältää:
+- Path mapping (`@/` viittaa `src/` kansioon)
+- Strict mode
+- Next.js optimoinnit
+
+## 📝 Kehitysohjeet
+
+### Koodin tyyli
+- Käytä TypeScript:ä
+- Noudata ESLint sääntöjä
+- Komponentit PascalCase:ssa
+- Tiedostot kebab-case:ssa
+
+### Commit viestit
+- `feat: uusi ominaisuus`
+- `fix: bugikorjaus`
+- `docs: dokumentaation päivitys`
+- `style: koodin formatointi`
+- `refactor: koodin uudelleenjärjestely`
+
+## 🤝 Kehitykseen osallistuminen
+
+1. Fork projekti
+2. Luo feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit muutokset (`git commit -m 'feat: add amazing feature'`)
+4. Push branchiin (`git push origin feature/amazing-feature`)
+5. Avaa Pull Request
+
+## 📄 Lisenssi
+
+MIT License - katso [LICENSE](LICENSE) tiedosto
+
+## 📞 Yhteystiedot
+
+- **Email:** info@tgs2025.fi
+- **GitHub:** [github.com/tgs2025](https://github.com/tgs2025)
+- **Verkkosivusto:** [tgs2025.fi](https://tgs2025.fi)
+
+---
+
+Rakennettu ❤️:llä käyttäen Next.js 14 & Tailwind CSS
