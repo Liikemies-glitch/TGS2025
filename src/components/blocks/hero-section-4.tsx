@@ -50,7 +50,7 @@ export function HeroSection() {
                             <InfiniteSlider
                                 duration={40}
                                 gap={112}>
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/prospectum.png"
@@ -62,7 +62,7 @@ export function HeroSection() {
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/minnalearn-png.webp"
@@ -73,7 +73,7 @@ export function HeroSection() {
                                     />
                                 </div>
                                 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/evolver.webp"
@@ -84,7 +84,7 @@ export function HeroSection() {
                                     />
                                 </div>
                                 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/akamon.webp"
@@ -95,7 +95,7 @@ export function HeroSection() {
                                     />
                                 </div>
                                 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/eemel.png"
@@ -106,63 +106,86 @@ export function HeroSection() {
                                     />
                                 </div>
                                 
-                                                                <div className="flex items-center justify-center w-[120px] h-[40px]">                                    <Image                                        className="mx-auto h-5 w-fit dark:invert object-contain"                                        src="/images/logos/seppo.webp"                                        alt="Seppo Logo"                                        height={19}                                        width={120}                                    />                                </div>
+                                <div className="logo-container">
+                                    <Image
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
+                                        src="/images/logos/seppo.webp"
+                                        alt="Seppo Logo"
+                                        height={19}
+                                        width={120}
+                                        loading="eager"
+                                    />
+                                </div>
                                 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-7 w-fit dark:invert object-contain"
                                         src="/images/logos/elisa.webp"
                                         alt="Elisa Logo"
                                         height={28}
                                         width={140}
+                                        loading="eager"
                                     />
                                 </div>
 
-                                                                <div className="flex items-center justify-center w-[120px] h-[40px]">                                    <Image                                        className="mx-auto h-6 w-fit dark:invert object-contain"                                        src="/images/logos/paytrail-png.webp"                                        alt="Paytrail Logo"                                        height={22}                                        width={132}                                    />                                </div>
+                                <div className="logo-container">
+                                    <Image
+                                        className="mx-auto h-6 w-fit dark:invert object-contain"
+                                        src="/images/logos/paytrail-png.webp"
+                                        alt="Paytrail Logo"
+                                        height={22}
+                                        width={132}
+                                        loading="eager"
+                                    />
+                                </div>
 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/kamux-png.webp"
                                         alt="Kamux Logo"
                                         height={16}
                                         width={100}
+                                        loading="eager"
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/gebwell-png.webp"
                                         alt="Gebwell Logo"
                                         height={20}
                                         width={120}
+                                        loading="eager"
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-6 w-fit dark:invert object-contain"
                                         src="/images/logos/groweo-png.webp"
                                         alt="Groweo Logo"
                                         height={24}
                                         width={120}
+                                        loading="eager"
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-center w-[120px] h-[40px]">
+                                <div className="logo-container">
                                     <Image
                                         className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/1001lakes-png.webp"
                                         alt="1001 Lakes Logo"
                                         height={20}
                                         width={120}
+                                        loading="eager"
                                     />
                                 </div>
                             </InfiniteSlider>
 
-                            <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
-                            <div className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
+                            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent"></div>
+                            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent"></div>
                             <ProgressiveBlur
                                 className="pointer-events-none absolute left-0 top-0 h-full w-20"
                                 direction="left"

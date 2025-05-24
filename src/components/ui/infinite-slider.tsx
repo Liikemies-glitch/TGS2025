@@ -32,11 +32,14 @@ export function InfiniteSlider({
 
   // Wait for component to mount and measure before starting animation
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true);
-    }, 100); // Small delay to ensure proper measurement
+    // Use requestAnimationFrame to ensure DOM is ready
+    const timer = requestAnimationFrame(() => {
+      setTimeout(() => {
+        setIsMounted(true);
+      }, 50); // Reduced delay for faster initialization
+    });
     
-    return () => clearTimeout(timer);
+    return () => cancelAnimationFrame(timer);
   }, []);
 
   useEffect(() => {
@@ -111,6 +114,8 @@ export function InfiniteSlider({
             : { y: translation }),
           gap: `${gap}px`,
           flexDirection: direction === 'horizontal' ? 'row' : 'column',
+          // Ensure consistent initial positioning
+          opacity: isMounted ? 1 : 0,
         }}
         ref={ref}
         {...hoverProps}
