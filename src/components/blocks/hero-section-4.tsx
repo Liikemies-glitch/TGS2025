@@ -12,11 +12,11 @@ export function HeroSection() {
     return (
         <main className="overflow-x-hidden">
             <section>
-                <div className="pb-12 pt-12 md:pb-16 lg:pb-24 lg:pt-44">
+                <div className="pb-12 pt-20 md:pb-16 md:pt-24 lg:pb-24 lg:pt-44">
                     <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
-                        <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-[70%] lg:max-w-none lg:text-left">
+                        <div className="mx-auto max-w-lg text-left lg:ml-0 lg:w-[70%] lg:max-w-none">
                             <AnimatedGroup preset="blur-slide">
-                                <div className="flex justify-center lg:justify-start mb-6">
+                                <div className="flex justify-start lg:justify-start mb-6">
                                     <AnnouncementButton>
                                         New hire: Aksel Suokas
                                     </AnnouncementButton>
@@ -26,7 +26,7 @@ export function HeroSection() {
                                 
                                 <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over twenty companies achieve breakthrough growth.</p>
 
-                                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
+                                <div className="mt-12 flex flex-row items-start justify-start gap-2 sm:flex-row lg:justify-start">
                                     <Button
                                         asChild
                                         size="lg"
