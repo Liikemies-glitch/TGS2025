@@ -15,7 +15,8 @@ export function HeroSection() {
                     <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
                         <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-[70%] lg:max-w-none lg:text-left">
                             <AnimatedGroup preset="blur-slide">
-                                <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
+                                <h1 className="mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
+                                
                                 <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over ten companies achieve breakthrough growth.</p>
 
                                 <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
