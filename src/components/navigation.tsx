@@ -31,7 +31,7 @@ const Logo = ({ className }: { className?: string }) => {
     return (
         <div className={cn("flex items-center space-x-2", className)}>
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                TGS2025
+                The Good Side
             </div>
         </div>
     )

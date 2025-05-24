@@ -24,7 +24,7 @@ export function HeroSection() {
                                 
                                 <h1 className="mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now.</h1>
                                 
-                                <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over ten companies achieve breakthrough growth.</p>
+                                <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over twenty companies achieve breakthrough growth.</p>
 
                                 <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
                                     <Button
@@ -87,62 +87,6 @@ export function HeroSection() {
                                 <InfiniteSlider
                                     duration={40}
                                     gap={112}>
-                                    <div className="logo-container">
-                                        <Image
-                                            className="mx-auto h-5 w-fit dark:invert object-contain"
-                                            src="/images/logos/prospectum.png"
-                                            alt="Prospectum Logo"
-                                            height={20}
-                                            width={120}
-                                            loading="eager"
-                                            priority
-                                        />
-                                    </div>
-
-                                    <div className="logo-container">
-                                        <Image
-                                            className="mx-auto h-4 w-fit dark:invert object-contain"
-                                            src="/images/logos/minnalearn-png.webp"
-                                            alt="MinnaLearn Logo"
-                                            height={16}
-                                            width={100}
-                                            loading="eager"
-                                        />
-                                    </div>
-                                    
-                                    <div className="logo-container">
-                                        <Image
-                                            className="mx-auto h-4 w-fit dark:invert object-contain"
-                                            src="/images/logos/evolver.webp"
-                                            alt="Evolver Logo"
-                                            height={16}
-                                            width={100}
-                                            loading="eager"
-                                        />
-                                    </div>
-                                    
-                                    <div className="logo-container">
-                                        <Image
-                                            className="mx-auto h-5 w-fit dark:invert object-contain"
-                                            src="/images/logos/akamon.webp"
-                                            alt="Akamon Logo"
-                                            height={20}
-                                            width={120}
-                                            loading="eager"
-                                        />
-                                    </div>
-                                    
-                                    <div className="logo-container">
-                                        <Image
-                                            className="mx-auto h-5 w-fit dark:invert object-contain"
-                                            src="/images/logos/eemel.png"
-                                            alt="Eemel Logo"
-                                            height={20}
-                                            width={120}
-                                            loading="eager"
-                                        />
-                                    </div>
-                                    
                                     <div className="logo-container">
                                         <Image
                                             className="mx-auto h-5 w-fit dark:invert object-contain"
@@ -214,6 +158,62 @@ export function HeroSection() {
                                             className="mx-auto h-5 w-fit dark:invert object-contain"
                                             src="/images/logos/1001lakes-png.webp"
                                             alt="1001 Lakes Logo"
+                                            height={20}
+                                            width={120}
+                                            loading="eager"
+                                        />
+                                    </div>
+
+                                    <div className="logo-container">
+                                        <Image
+                                            className="mx-auto h-5 w-fit dark:invert object-contain"
+                                            src="/images/logos/prospectum.png"
+                                            alt="Prospectum Logo"
+                                            height={20}
+                                            width={120}
+                                            loading="eager"
+                                            priority
+                                        />
+                                    </div>
+
+                                    <div className="logo-container">
+                                        <Image
+                                            className="mx-auto h-4 w-fit dark:invert object-contain"
+                                            src="/images/logos/minnalearn-png.webp"
+                                            alt="MinnaLearn Logo"
+                                            height={16}
+                                            width={100}
+                                            loading="eager"
+                                        />
+                                    </div>
+                                    
+                                    <div className="logo-container">
+                                        <Image
+                                            className="mx-auto h-4 w-fit dark:invert object-contain"
+                                            src="/images/logos/evolver.webp"
+                                            alt="Evolver Logo"
+                                            height={16}
+                                            width={100}
+                                            loading="eager"
+                                        />
+                                    </div>
+                                    
+                                    <div className="logo-container">
+                                        <Image
+                                            className="mx-auto h-5 w-fit dark:invert object-contain"
+                                            src="/images/logos/akamon.webp"
+                                            alt="Akamon Logo"
+                                            height={20}
+                                            width={120}
+                                            loading="eager"
+                                        />
+                                    </div>
+                                    
+                                    <div className="logo-container">
+                                        <Image
+                                            className="mx-auto h-5 w-fit dark:invert object-contain"
+                                            src="/images/logos/eemel.png"
+                                            alt="Eemel Logo"
                                             height={20}
                                             width={120}
                                             loading="eager"
