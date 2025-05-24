@@ -44,70 +44,73 @@ export function HeroSection() {
                 <div className="group relative m-auto max-w-6xl px-6">
                     <div className="flex flex-col items-center md:flex-row">
                         <div className="md:max-w-44 md:border-r md:pr-6">
-                            <p className="text-end text-sm">Luotettu kumppani</p>
+                            <p className="text-end text-sm">Trusted by</p>
                         </div>
-                        <div className="relative py-6 md:w-[calc(100%-11rem)]">
+                        <div className="relative py-6 md:w-[calc(100%-11rem)] min-h-[60px] flex items-center">
                             <InfiniteSlider
                                 duration={40}
                                 gap={112}>
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/prospectum.png"
                                         alt="Prospectum Logo"
                                         height={20}
                                         width={120}
+                                        loading="eager"
+                                        priority
                                     />
                                 </div>
 
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-4 w-fit dark:invert"
+                                        className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/minnalearn-png.webp"
                                         alt="MinnaLearn Logo"
                                         height={16}
                                         width={100}
+                                        loading="eager"
                                     />
                                 </div>
-                                <div className="flex">
+                                
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-4 w-fit dark:invert"
+                                        className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/evolver.webp"
                                         alt="Evolver Logo"
                                         height={16}
                                         width={100}
+                                        loading="eager"
                                     />
                                 </div>
-                                <div className="flex">
+                                
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/akamon.webp"
                                         alt="Akamon Logo"
                                         height={20}
                                         width={120}
+                                        loading="eager"
                                     />
                                 </div>
-                                <div className="flex">
+                                
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/eemel.png"
                                         alt="Eemel Logo"
                                         height={20}
                                         width={120}
+                                        loading="eager"
                                     />
                                 </div>
-                                <div className="flex">
+                                
+                                                                <div className="flex items-center justify-center w-[120px] h-[40px]">                                    <Image                                        className="mx-auto h-5 w-fit dark:invert object-contain"                                        src="/images/logos/seppo.webp"                                        alt="Seppo Logo"                                        height={19}                                        width={120}                                    />                                </div>
+                                
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-4 w-fit dark:invert"
-                                        src="/images/logos/seppo.webp"
-                                        alt="Seppo Logo"
-                                        height={16}
-                                        width={100}
-                                    />
-                                </div>
-                                <div className="flex">
-                                    <Image
-                                        className="mx-auto h-7 w-fit dark:invert"
+                                        className="mx-auto h-7 w-fit dark:invert object-contain"
                                         src="/images/logos/elisa.webp"
                                         alt="Elisa Logo"
                                         height={28}
@@ -115,29 +118,11 @@ export function HeroSection() {
                                     />
                                 </div>
 
-                                <div className="flex">
-                                    <Image
-                                        className="mx-auto h-6 w-fit dark:invert"
-                                        src="/images/logos/cumucore.webp"
-                                        alt="Cumucore Logo"
-                                        height={24}
-                                        width={120}
-                                    />
-                                </div>
+                                                                <div className="flex items-center justify-center w-[120px] h-[40px]">                                    <Image                                        className="mx-auto h-6 w-fit dark:invert object-contain"                                        src="/images/logos/paytrail-png.webp"                                        alt="Paytrail Logo"                                        height={22}                                        width={132}                                    />                                </div>
 
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
-                                        src="/images/logos/paytrail-png.webp"
-                                        alt="Paytrail Logo"
-                                        height={20}
-                                        width={120}
-                                    />
-                                </div>
-
-                                <div className="flex">
-                                    <Image
-                                        className="mx-auto h-4 w-fit dark:invert"
+                                        className="mx-auto h-4 w-fit dark:invert object-contain"
                                         src="/images/logos/kamux-png.webp"
                                         alt="Kamux Logo"
                                         height={16}
@@ -145,19 +130,9 @@ export function HeroSection() {
                                     />
                                 </div>
 
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-4 w-fit dark:invert"
-                                        src="/images/logos/materialistning-png.webp"
-                                        alt="Materialistning Logo"
-                                        height={16}
-                                        width={100}
-                                    />
-                                </div>
-
-                                <div className="flex">
-                                    <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/gebwell-png.webp"
                                         alt="Gebwell Logo"
                                         height={20}
@@ -165,9 +140,9 @@ export function HeroSection() {
                                     />
                                 </div>
 
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-6 w-fit dark:invert"
+                                        className="mx-auto h-6 w-fit dark:invert object-contain"
                                         src="/images/logos/groweo-png.webp"
                                         alt="Groweo Logo"
                                         height={24}
@@ -175,9 +150,9 @@ export function HeroSection() {
                                     />
                                 </div>
 
-                                <div className="flex">
+                                <div className="flex items-center justify-center w-[120px] h-[40px]">
                                     <Image
-                                        className="mx-auto h-5 w-fit dark:invert"
+                                        className="mx-auto h-5 w-fit dark:invert object-contain"
                                         src="/images/logos/1001lakes-png.webp"
                                         alt="1001 Lakes Logo"
                                         height={20}

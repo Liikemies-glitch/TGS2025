@@ -28,13 +28,28 @@ export function InfiniteSlider({
   const translation = useMotionValue(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [key, setKey] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Wait for component to mount and measure before starting animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 100); // Small delay to ensure proper measurement
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
+    if (!isMounted) return;
+    
     let controls;
     const size = direction === 'horizontal' ? width : height;
     const contentSize = size + gap;
     const from = reverse ? -contentSize / 2 : 0;
     const to = reverse ? 0 : -contentSize / 2;
+
+    // Only start animation if we have valid dimensions
+    if (size <= 0) return;
 
     if (isTransitioning) {
       controls = animate(translation, [translation.get(), to], {
@@ -61,6 +76,7 @@ export function InfiniteSlider({
 
     return controls?.stop;
   }, [
+    isMounted,
     key,
     translation,
     currentDuration,
