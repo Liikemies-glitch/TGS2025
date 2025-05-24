@@ -127,7 +127,7 @@ const UnclearPositioningIllustration = () => (
     {/* Multiple competing messages */}
     <g transform="translate(20, 20)">
       <rect x="0" y="0" width="120" height="60" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" rx="8" />
-      <text x="60" y="20" textAnchor="middle" className="fill-slate-600 text-xs font-medium">We're #1!</text>
+      <text x="60" y="20" textAnchor="middle" className="fill-slate-600 text-xs font-medium">We&apos;re #1!</text>
       <text x="60" y="35" textAnchor="middle" className="fill-slate-500 text-xs">Best Quality</text>
       <text x="60" y="50" textAnchor="middle" className="fill-slate-500 text-xs">Cheapest Price</text>
     </g>

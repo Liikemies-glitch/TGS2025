@@ -43,7 +43,7 @@ export function TeamSection() {
 
         {/* Team Grid */}
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-          {teamMembers.map((member, index) => (
+          {teamMembers.map((member) => (
             <div 
               key={`${member.name}-${member.lastName}`}
               className="group text-center"
