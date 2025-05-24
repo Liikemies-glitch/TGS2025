@@ -44,6 +44,7 @@ export default function RootLayout({
     <html lang="fi" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <Navigation />

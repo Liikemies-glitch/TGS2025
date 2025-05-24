@@ -208,7 +208,7 @@ const problems: Problem[] = [
   },
   {
     title: "Fragmented Design Process",
-    description: "Your web design and content design is fragmented across multiple partners, resulting in inconsistent quality and low conversions.",
+    description: "Your web and content design is fragmented across multiple partners, resulting in inconsistent quality and low conversions.",
     illustration: <FragmentedProcessIllustration />
   },
   {
