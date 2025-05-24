@@ -306,43 +306,43 @@ export function ProblemSection() {
           transition: scrollProgress > escapeThreshold ? 'none' : 'transform 0.1s ease-out'
         }}
       >
-        {/* Section indicator - hidden on mobile */}
-        <div className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 z-10">
-          <div className="flex flex-col gap-2">
-            {problems.map((_, index) => {
-              const currentSection = Math.floor(scrollProgress * problems.length)
-              const isActive = currentSection === index
-              
-              return (
-                <div
-                  key={index}
-                  className="relative"
-                >
-                  <div
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      isActive 
-                        ? 'bg-blue-600' 
-                        : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
-                    }`}
-                  />
-                  {isActive && (
-                    <>
-                      <div className="absolute inset-0 w-2 h-2 rounded-full bg-blue-500/40 blur-[2px] scale-150" />
-                      <div className="absolute inset-0 w-2 h-2 rounded-full bg-white/20 blur-[3px] scale-200" />
-                    </>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto max-w-6xl w-full px-6">
             {/* Two Column Layout */}
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
               {/* Left Column - Current Problem */}
               <div className="relative h-screen flex items-center">
+                {/* Section indicator - positioned next to text content */}
+                <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 z-10">
+                  <div className="flex flex-col gap-1.5">
+                    {problems.map((_, index) => {
+                      const currentSection = Math.floor(scrollProgress * problems.length)
+                      const isActive = currentSection === index
+                      
+                      return (
+                        <div
+                          key={index}
+                          className="relative"
+                        >
+                          <div
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              isActive 
+                                ? 'bg-blue-600' 
+                                : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
+                            }`}
+                          />
+                          {isActive && (
+                            <>
+                              <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-blue-500/40 blur-[2px] scale-150" />
+                              <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-white/20 blur-[3px] scale-200" />
+                            </>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+                
                 {problems.map((problem, index) => {
                   // Calculate position for each problem based on scroll progress
                   const problemProgress = (scrollProgress * problems.length) - index
