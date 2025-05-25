@@ -2,7 +2,14 @@
 
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 
-const teamMembers = [
+interface TeamMember {
+  quote: string;
+  name: string;
+  designation: string;
+  src: string;
+}
+
+export const teamMembers: TeamMember[] = [
   {
     quote: "Specializing in SaaS solutions and product strategy. I help businesses scale their software products and optimize user experiences for maximum growth and retention.",
     name: 'Mikki Aalto-Ylevä',

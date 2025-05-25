@@ -59,6 +59,10 @@ export default {
   		animation: {
   			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
   			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
+        'star-movement-bottom': 'star-movement-bottom 4s linear infinite',
+        'star-movement-top': 'star-movement-top 4s linear infinite',
+        'star-movement-bottom-hover': 'star-movement-bottom 2s linear infinite',
+        'star-movement-top-hover': 'star-movement-top 2s linear infinite',
   		},
   		keyframes: {
   			'shimmer-slide': {
@@ -80,6 +84,14 @@ export default {
   					transform: 'translateZ(0) rotate(360deg)',
   				},
   			},
+        'star-movement-bottom': {
+          '0%': { transform: 'translate(100%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(-100%, 0%)', opacity: '0' },
+        },
+        'star-movement-top': {
+          '0%': { transform: 'translate(-100%, 0%)', opacity: '1' },
+          '100%': { transform: 'translate(100%, 0%)', opacity: '0' },
+        },
   		},
   	}
   },
