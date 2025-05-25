@@ -1,29 +1,31 @@
-import Image from 'next/image'
+"use client";
+
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 
 const teamMembers = [
   {
-    name: 'Mikki',
-    lastName: 'Aalto-Ylevä',
-    role: 'SaaS Specialist',
-    image: '/images/team/mikki gs.webp'
+    quote: "Specializing in SaaS solutions and product strategy. I help businesses scale their software products and optimize user experiences for maximum growth and retention.",
+    name: 'Mikki Aalto-Ylevä',
+    designation: 'SaaS Specialist',
+    src: '/images/team/Mikki.jpeg'
   },
   {
-    name: 'Tuomas',
-    lastName: 'Kaartoluoma',
-    role: 'Designer',
-    image: '/images/team/tuomas_gs.webp'
+    quote: "Creating intuitive and beautiful user experiences. I focus on user-centered design principles to craft interfaces that are both functional and delightful to use.",
+    name: 'Tuomas Kaartoluoma',
+    designation: 'Fullstack Designer',
+    src: '/images/team/Tuomas.png'
   },
   {
-    name: 'Dũng',
-    lastName: 'Nguyen',
-    role: 'Designer',
-    image: '/images/team/duncan gs.webp'
+    quote: "Passionate about visual storytelling and brand identity. I bring creative solutions to complex design challenges, ensuring every pixel serves a purpose.",
+    name: 'Dũng Nguyen',
+    designation: 'Fullstack Designer',
+    src: '/images/team/Duncan.jpeg'
   },
   {
-    name: 'Aksel',
-    lastName: 'Suokas',
-    role: 'Designer',
-    image: '/images/team/aksel gs.webp'
+    quote: "Focused on creating seamless user journeys and innovative design systems. I believe great design should be invisible yet impactful in solving real problems.",
+    name: 'Aksel Suokas',
+    designation: 'Fullstack Designer',
+    src: '/images/team/Aksel.jpeg'
   }
 ]
 
@@ -32,48 +34,23 @@ export function TeamSection() {
     <section className="py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-            Your product team&apos;s missing pieces
+        <div className="max-w-3xl text-left mb-4">
+          <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-3">
+            The Solution
+          </p>
+          <h2 className="text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl">
+            Your product team&apos;s <span className="text-blue-600 dark:text-blue-400">missing pieces</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground md:text-xl">
+          <p className="mt-4 text-base text-muted-foreground md:text-lg">
             Let us fill the gaps and accelerate your growth.
           </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-          {teamMembers.map((member) => (
-            <div 
-              key={`${member.name}-${member.lastName}`}
-              className="group text-center"
-            >
-              {/* Profile Image */}
-              <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-2xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
-                <Image
-                  src={member.image}
-                  alt={`${member.name} ${member.lastName}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 192px, 192px"
-                />
-              </div>
-
-              {/* Member Info */}
-              <div className="mt-6">
-                <h3 className="text-xl font-medium">
-                  {member.name}
-                </h3>
-                <h4 className="text-xl font-medium text-muted-foreground">
-                  {member.lastName}
-                </h4>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {member.role}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Animated Team Showcase */}
+        <AnimatedTestimonials 
+          testimonials={teamMembers} 
+          autoplay={true}
+        />
       </div>
     </section>
   )

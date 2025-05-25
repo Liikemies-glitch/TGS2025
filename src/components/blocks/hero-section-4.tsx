@@ -31,7 +31,7 @@ export function HeroSection() {
                                     <div className="flex justify-start lg:justify-start mb-6">
                                         <div className="opacity-0">Designer added: Aksel Suokas</div>
                                     </div>
-                                    <h1 className="opacity-0 mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be market leader by now.</h1>
+                                    <h1 className="opacity-0 mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be market leader by now</h1>
                                     <p className="opacity-0 mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking.</p>
                                     <div className="opacity-0 mt-12 flex flex-row items-start justify-start gap-2 sm:flex-row lg:justify-start">
                                         <div>Book a meeting</div>
@@ -93,7 +93,7 @@ export function HeroSection() {
                             >
                                 <div className="flex justify-start lg:justify-start mb-6">
                                     <AnnouncementButton>
-                                        New hire: Aksel Suokas
+                                        Designer added: Aksel Suokas
                                     </AnnouncementButton>
                                 </div>
                                 

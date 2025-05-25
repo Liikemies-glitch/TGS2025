@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://tgs2025.fi"),
   openGraph: {
-    title: "TGS2025 - Moderni kotisivu",
-    description: "Moderni verkkosivusto Next.js 15:llä ja Tailwind CSS:llä",
+    title: "The Good Side",
+    description: "Strategic Design partner for SaaS companies",
     type: "website",
     locale: "fi_FI",
   },
