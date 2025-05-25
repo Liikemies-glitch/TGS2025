@@ -177,9 +177,9 @@ function AnimatedGroup({
   const itemVariants = variants?.item || selectedVariants.item;
 
   if (!isMounted) {
-    // Render without animation on server/initial client render
+    // Render completely hidden on server/initial client render
     return (
-      <div className={cn(className)}>
+      <div className={cn("opacity-0", className)}>
         {React.Children.map(children, (child, index) => (
           <div key={index}>
             {child}

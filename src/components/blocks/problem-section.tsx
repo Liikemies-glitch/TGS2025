@@ -298,7 +298,7 @@ export function ProblemSection() {
   const translateY = escapeProgress * -100 // Move container up by 100vh
 
   return (
-    <section id="problem-section" className="bg-background" style={{ height: `${problems.length * 150}vh` }}>
+    <section id="problem-section" className="bg-background" style={{ height: `${problems.length * 200}vh` }}>
       <div 
         className="sticky top-0 h-screen overflow-hidden"
         style={{
