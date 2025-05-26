@@ -59,7 +59,7 @@ export function HeroSection() {
             <section>
                 <div className="pb-12 pt-20 md:pb-16 md:pt-24 lg:pb-24 lg:pt-44">
                     <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
-                        <div className="mx-auto max-w-lg text-left lg:ml-0 lg:w-[70%] lg:max-w-none">
+                        <div className="mx-auto max-w-lg text-center lg:mx-auto lg:w-[70%] lg:max-w-none">
                             <AnimatedGroup 
                                 preset="blur-slide"
                                 variants={{
@@ -91,17 +91,17 @@ export function HeroSection() {
                                     },
                                 }}
                             >
-                                <div className="flex justify-start lg:justify-start mb-6">
+                                <div className="flex justify-center lg:justify-center mb-6">
                                     <AnnouncementButton>
                                         Designer added: Aksel Suokas
                                     </AnnouncementButton>
                                 </div>
                                 
-                                <h1 className="mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">If DIY methods scaled, you&apos;d be <span className="text-blue-600 dark:text-blue-400">market leader</span> by now</h1>
+                                <h1 className="mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">DIY got you here. <span className="text-blue-600 dark:text-blue-400">Strategic design</span> gets you further.</h1>
                                 
                                 <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over twenty companies achieve breakthrough growth.</p>
 
-                                <div className="mt-12 flex flex-row items-start justify-start gap-2 sm:flex-row lg:justify-start">
+                                <div className="mt-12 flex flex-row items-center justify-center gap-2 sm:flex-row lg:justify-center">
                                     <Button
                                         asChild
                                         size="lg"
