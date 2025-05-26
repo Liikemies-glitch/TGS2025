@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import {
-  Tooltip,
+  TooltipRoot,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
@@ -85,7 +85,7 @@ function Footerdemo() {
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
             <div className="mb-6 flex space-x-4">
               <TooltipProvider>
-                <Tooltip>
+                <TooltipRoot>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Facebook className="h-4 w-4" />
@@ -95,10 +95,10 @@ function Footerdemo() {
                   <TooltipContent>
                     <p>Follow us on Facebook</p>
                   </TooltipContent>
-                </Tooltip>
+                </TooltipRoot>
               </TooltipProvider>
               <TooltipProvider>
-                <Tooltip>
+                <TooltipRoot>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Twitter className="h-4 w-4" />
@@ -108,10 +108,10 @@ function Footerdemo() {
                   <TooltipContent>
                     <p>Follow us on Twitter</p>
                   </TooltipContent>
-                </Tooltip>
+                </TooltipRoot>
               </TooltipProvider>
               <TooltipProvider>
-                <Tooltip>
+                <TooltipRoot>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Instagram className="h-4 w-4" />
@@ -121,10 +121,10 @@ function Footerdemo() {
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
                   </TooltipContent>
-                </Tooltip>
+                </TooltipRoot>
               </TooltipProvider>
               <TooltipProvider>
-                <Tooltip>
+                <TooltipRoot>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Linkedin className="h-4 w-4" />
@@ -134,7 +134,7 @@ function Footerdemo() {
                   <TooltipContent>
                     <p>Connect with us on LinkedIn</p>
                   </TooltipContent>
-                </Tooltip>
+                </TooltipRoot>
               </TooltipProvider>
             </div>
             <div className="flex items-center space-x-2">
