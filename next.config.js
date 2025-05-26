@@ -11,7 +11,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    optimizeCss: true,
+    optimizeCss: process.env.NODE_ENV === 'production',
     optimizePackageImports: ['@radix-ui/react-icons', '@tabler/icons-react', 'lucide-react'],
   },
 };
