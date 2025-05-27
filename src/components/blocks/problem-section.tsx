@@ -87,7 +87,7 @@ export function ProblemSection() {
                    <div 
                      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 scale-150"
                      style={{
-                       backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png.png')"
+                       backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png')"
                      }}
                    ></div>
                                      <div className={`relative w-full opacity-90 ${index === 0 ? 'h-56' : 'h-80'}`}>
@@ -177,7 +177,7 @@ export function ProblemSection() {
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 scale-150"
                   style={{
-                    backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png.png')"
+                    backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png')"
                   }}
                 ></div>
                 
