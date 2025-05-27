@@ -1,7 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [
       {
@@ -11,9 +11,8 @@ const nextConfig = {
     ],
   },
   experimental: {
-    optimizeCss: process.env.NODE_ENV === 'production',
     optimizePackageImports: ['@radix-ui/react-icons', '@tabler/icons-react', 'lucide-react'],
   },
 };
 
-module.exports = nextConfig; 
+export default nextConfig; 

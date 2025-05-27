@@ -74,7 +74,6 @@ export function AnnouncementButton({
           {...props}
         >
           <div className="flex items-center gap-3">
-            <div className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
             <AvatarGroup className="mr-1">
               {teamMembers.map((member) => (
                 <TooltipRoot key={member.name}>

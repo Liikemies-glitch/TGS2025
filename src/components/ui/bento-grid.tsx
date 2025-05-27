@@ -1,5 +1,7 @@
 "use client";
 
+// Icons imported for potential use in BentoGrid items
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Box, Lock, Search, Settings, Sparkles, Wand2, Banknote, Compass, Lightbulb, Users } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
@@ -25,7 +27,7 @@ export function BentoGrid({ items }: BentoGridProps) {
             {items.map((item, index) => (
                 <GridItem
                     key={index}
-                    area={getGridArea(index, item.colSpan)}
+                    area={getGridArea(index)}
                     icon={item.icon}
                     title={item.title}
                     description={item.description}
@@ -43,7 +45,7 @@ interface GridItemProps extends BentoItem {
     area: string;
 }
 
-const getGridArea = (index: number, colSpan: number = 1): string => {
+const getGridArea = (index: number): string => {
     // Default grid areas for different indices
     const gridAreas = [
         "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]",
@@ -56,7 +58,7 @@ const getGridArea = (index: number, colSpan: number = 1): string => {
     return gridAreas[index] || "";
 };
 
-const GridItem = ({ area, icon, title, description, meta, status, tags, hasPersistentHover }: GridItemProps) => {
+const GridItem = ({ area, icon, title, description, meta, tags, hasPersistentHover }: GridItemProps) => {
     return (
         <li className={cn("min-h-[14rem] list-none", area)}>
             <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">

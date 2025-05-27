@@ -1,176 +1,260 @@
-# TGS2025 - Moderni kotisivu
+# TGS2025 - Modern Website
 
-Moderni verkkosivusto, joka on rakennettu Next.js 14:llä, Tailwind CSS:llä ja shadcn/ui komponenteilla. Valmis integroitavaksi Strapi CMS:n kanssa.
+A modern, responsive website built with Next.js 15, React 19, Tailwind CSS, and advanced UI components. Features a complete landing page with hero section, problem/solution presentation, and team showcase.
 
-## 🚀 Teknologiastäkki
+## 🚀 Tech Stack
 
 ### Frontend
-- **Next.js 14** - App Router arkkitehtuurilla
-- **React 19** - Uusimmat React ominaisuudet
-- **TypeScript** - Tyyppiturvallisuus
+- **Next.js 15** - App Router with Turbopack for fast development
+- **React 19** - Latest React features and optimizations
+- **TypeScript** - Full type safety throughout the project
 - **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - Korkealaatuiset React komponentit
+- **shadcn/ui** - High-quality, accessible React components
+- **Radix UI** - Unstyled, accessible UI primitives
+- **Framer Motion** - Smooth animations and transitions
 
-### Backend & CMS (tuleva)
-- **Strapi v4** - Headless CMS
-- **RESTful API** - Standardoidut API-rajapinnat
-- **GraphQL** - Joustava data-haku
-- **PostgreSQL/MySQL** - Tietokanta
+### UI Components & Libraries
+- **Lucide React** - Beautiful, customizable icons
+- **Tabler Icons** - Additional icon set
+- **next-themes** - Dark/light mode support
+- **class-variance-authority** - Component variant management
+- **tailwind-merge** - Intelligent Tailwind class merging
 
-## 🛠️ Kehitysympäristön asennus
+## 🛠️ Development Setup
 
-### Vaatimukset
-- Node.js 18.17 tai uudempi
-- npm, yarn tai pnpm
+### Requirements
+- Node.js 18.17 or newer
+- npm, yarn, or pnpm
 
-### Asennus
+### Installation
 
-1. **Kloonaa repositorio**
+1. **Clone the repository**
    ```bash
    git clone <repository-url>
    cd tgs2025-website
    ```
 
-2. **Asenna riippuvuudet**
+2. **Install dependencies**
    ```bash
    npm install
-   # tai
+   # or
    yarn install
-   # tai
+   # or
    pnpm install
    ```
 
-3. **Käynnistä kehitysserveri**
+3. **Start development server**
    ```bash
    npm run dev
-   # tai
+   # or
    yarn dev
-   # tai
+   # or
    pnpm dev
    ```
 
-4. **Avaa selain**
-   Siirry osoitteeseen [http://localhost:3000](http://localhost:3000)
+4. **Open browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 📁 Projektin rakenne
+## 📁 Project Structure
 
 ```
 tgs2025-website/
 ├── src/
-│   ├── app/                 # Next.js 14 App Router
-│   │   ├── globals.css      # Globaalit tyylit
-│   │   ├── layout.tsx       # Root layout
-│   │   └── page.tsx         # Kotisivu
+│   ├── app/                    # Next.js 15 App Router
+│   │   ├── demo/              # Demo pages
+│   │   ├── globals.css        # Global styles with custom CSS variables
+│   │   ├── layout.tsx         # Root layout with theme provider
+│   │   ├── page.tsx           # Homepage with all sections
+│   │   └── favicon.ico        # Site favicon
 │   ├── components/
-│   │   └── ui/              # shadcn/ui komponentit
+│   │   ├── blocks/            # Page section components
+│   │   │   ├── hero-section-4.tsx     # Advanced hero with animations
+│   │   │   ├── problem-section.tsx    # Problem presentation
+│   │   │   ├── solution-section.tsx   # Solution showcase
+│   │   │   ├── team-section.tsx       # Team member cards
+│   │   │   └── footer.tsx             # Site footer
+│   │   ├── ui/                # shadcn/ui and custom components
+│   │   │   ├── animated-group.tsx     # Animated component groups
+│   │   │   ├── animated-testimonials.tsx # Testimonial carousel
+│   │   │   ├── announcement-button.tsx # Animated announcement
+│   │   │   ├── bento-grid.tsx         # Modern grid layout
+│   │   │   ├── glowing-effect.tsx     # Glow animations
+│   │   │   ├── infinite-slider.tsx    # Infinite scrolling slider
+│   │   │   ├── progressive-blur.tsx   # Blur effects
+│   │   │   ├── shimmer-button.tsx     # Shimmer animations
+│   │   │   └── [other ui components]
+│   │   ├── illustrations/     # SVG illustrations and graphics
+│   │   ├── navigation.tsx     # Main navigation component
+│   │   ├── theme-provider.tsx # Theme context provider
+│   │   └── theme-toggle.tsx   # Dark/light mode toggle
 │   └── lib/
-│       └── utils.ts         # Apufunktiot
-├── public/                  # Staattiset tiedostot
-├── components.json          # shadcn/ui konfiguraatio
-├── tailwind.config.ts       # Tailwind CSS konfiguraatio
-├── tsconfig.json           # TypeScript konfiguraatio
-└── package.json            # Projektin riippuvuudet
+│       └── utils.ts           # Utility functions and helpers
+├── public/                    # Static assets
+├── components.json            # shadcn/ui configuration
+├── tailwind.config.ts         # Tailwind CSS configuration
+├── next.config.ts             # Next.js configuration
+├── tsconfig.json             # TypeScript configuration
+└── package.json              # Project dependencies
 ```
 
-## 🎨 Komponentit
+## 🎨 Components
 
-Projektissa käytetään [shadcn/ui](https://ui.shadcn.com/) komponenttikirjastoa. Asennetut komponentit:
+The project uses an extensive collection of modern UI components:
 
-- `Button` - Painikkeet
-- `Card` - Kortit sisällön esittämiseen
+### Core UI Components (shadcn/ui)
+- `Button` - Multiple variants with animations
+- `Card` - Content containers with hover effects
+- `Input` & `Textarea` - Form inputs with validation styles
+- `Label` - Accessible form labels
+- `Badge` - Status and category indicators
+- `Avatar` - User profile images with fallbacks
+- `Checkbox` & `Switch` - Form controls
+- `Tooltip` - Contextual information overlays
 
-### Uusien komponenttien asentaminen
+### Advanced Components
+- `AnimatedGroup` - Staggered animations for groups
+- `AnimatedTestimonials` - Carousel with smooth transitions
+- `AnnouncementButton` - Eye-catching call-to-action
+- `BentoGrid` - Modern grid layout system
+- `GlowingEffect` - Dynamic glow animations
+- `InfiniteSlider` - Continuous scrolling content
+- `ProgressiveBlur` - Gradient blur effects
+- `ShimmerButton` - Loading state animations
+
+### Page Sections
+- `HeroSection` - Advanced hero with multiple animations
+- `ProblemSection` - Problem statement with visual elements
+- `SolutionSection` - Solution presentation
+- `TeamSection` - Team member showcase
+- `Footer` - Complete site footer with links
+
+### Adding New Components
 
 ```bash
-npx shadcn@latest add [komponentti]
+npx shadcn@latest add [component]
 ```
 
-Esimerkiksi:
+Examples:
 ```bash
 npx shadcn@latest add dialog
 npx shadcn@latest add form
-npx shadcn@latest add input
+npx shadcn@latest add table
+npx shadcn@latest add dropdown-menu
 ```
 
-## 🎯 Ominaisuudet
+## 🎯 Features
 
-### ✅ Valmiina
-- Responsiivinen design
-- Dark mode tuki
-- TypeScript tyypitys
-- SEO optimointi (meta tagit)
-- Moderni gradient suunnittelu
-- Smooth scrolling navigaatio
-- Hover efektit ja animaatiot
+### ✅ Implemented
+- **Responsive Design** - Mobile-first approach with all breakpoints
+- **Dark/Light Mode** - Complete theme system with smooth transitions
+- **Advanced Animations** - Framer Motion powered interactions
+- **TypeScript** - Full type safety and IntelliSense
+- **SEO Optimized** - Meta tags, structured data, and performance
+- **Accessibility** - WCAG compliant components
+- **Modern Gradients** - Custom CSS gradient system
+- **Smooth Scrolling** - Enhanced navigation experience
+- **Performance Optimized** - Next.js 15 with Turbopack
+- **Icon System** - Multiple icon libraries integrated
+- **Component Variants** - Flexible styling system
 
-### 🔄 Tulossa (Strapi CMS integraatio)
-- Dynaaminen sisällönhallinta
-- Blog toiminnallisuus
-- Käyttäjien hallinta
-- Media kirjasto
-- Multilingual tuki
-- API endpoints
+### 🎨 Design System
+- **Custom Color Palette** - Carefully crafted color scheme
+- **Typography Scale** - Consistent text sizing and spacing
+- **Animation Library** - Reusable animation patterns
+- **Component Theming** - CSS variables for easy customization
+- **Responsive Breakpoints** - Mobile, tablet, desktop optimized
 
-## 🚀 Production deployment
+## 🚀 Production Deployment
 
-### Vercel (suositeltu)
-1. Pushaa koodi GitHubiin
-2. Yhdistä Vercel tili GitHub repositorioon
-3. Deploy automaattisesti
+### Vercel (Recommended)
+1. Push code to GitHub
+2. Connect Vercel account to GitHub repository
+3. Deploy automatically with optimizations
 
-### Manuaalinen build
+### Manual Build
 ```bash
 npm run build
 npm start
 ```
 
-## 🔧 Konfiguraatio
+### Build Optimizations
+- **Turbopack** - Fast development builds
+- **Image Optimization** - Next.js automatic image optimization
+- **Bundle Analysis** - Optimized package imports
+- **Code Splitting** - Automatic route-based splitting
+
+## 🔧 Configuration
 
 ### Tailwind CSS
-Tailwind konfiguraatio löytyy tiedostosta `tailwind.config.ts`. Mukana:
-- Custom väripaletti
-- Dark mode tuki
-- Responsive breakpoints
+Configuration in `tailwind.config.ts` includes:
+- **Custom Color System** - Extended color palette
+- **Dark Mode Support** - Class-based theme switching
+- **Custom Animations** - Tailwind animation extensions
+- **Responsive Design** - Mobile-first breakpoints
+- **Component Variants** - CVA integration
 
 ### TypeScript
-TypeScript konfiguraatio löytyy tiedostosta `tsconfig.json`. Sisältää:
-- Path mapping (`@/` viittaa `src/` kansioon)
-- Strict mode
-- Next.js optimoinnit
+Configuration in `tsconfig.json` features:
+- **Path Mapping** - `@/` aliases to `src/` directory
+- **Strict Mode** - Enhanced type checking
+- **Next.js Optimizations** - Framework-specific settings
+- **Modern Target** - Latest ECMAScript features
 
-## 📝 Kehitysohjeet
+### Next.js
+Configuration in `next.config.ts` includes:
+- **React Strict Mode** - Development warnings
+- **Image Domains** - Remote image optimization
+- **Package Optimization** - Selective imports for better performance
+- **Turbopack** - Fast refresh and builds
 
-### Koodin tyyli
-- Käytä TypeScript:ä
-- Noudata ESLint sääntöjä
-- Komponentit PascalCase:ssa
-- Tiedostot kebab-case:ssa
+## 📝 Development Guidelines
 
-### Commit viestit
-- `feat: uusi ominaisuus`
-- `fix: bugikorjaus`
-- `docs: dokumentaation päivitys`
-- `style: koodin formatointi`
-- `refactor: koodin uudelleenjärjestely`
+### Code Style
+- **TypeScript First** - All code written in TypeScript
+- **Component Composition** - Reusable, composable components
+- **Functional Programming** - Prefer functions over classes
+- **ESLint Compliance** - Automated code quality checks
+- **Naming Conventions** - PascalCase components, camelCase functions
 
-## 🤝 Kehitykseen osallistuminen
+### File Organization
+- **Feature-based** - Group related components together
+- **Index Exports** - Clean import statements
+- **Type Definitions** - Co-located with components
+- **Asset Organization** - Logical grouping in public/
 
-1. Fork projekti
-2. Luo feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit muutokset (`git commit -m 'feat: add amazing feature'`)
-4. Push branchiin (`git push origin feature/amazing-feature`)
-5. Avaa Pull Request
+### Commit Messages
+- `feat: new feature implementation`
+- `fix: bug fixes and corrections`
+- `docs: documentation updates`
+- `style: code formatting and style`
+- `refactor: code restructuring`
+- `perf: performance improvements`
+- `test: testing additions`
 
-## 📄 Lisenssi
+## 🤝 Contributing
 
-MIT License - katso [LICENSE](LICENSE) tiedosto
+1. Fork the project
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
-## 📞 Yhteystiedot
+### Development Workflow
+- **Feature Branches** - Separate branches for each feature
+- **Code Review** - All changes reviewed before merge
+- **Testing** - Ensure all features work across devices
+- **Documentation** - Update docs with new features
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
+
+## 📞 Contact
 
 - **Email:** info@tgs2025.fi
 - **GitHub:** [github.com/tgs2025](https://github.com/tgs2025)
-- **Verkkosivusto:** [tgs2025.fi](https://tgs2025.fi)
+- **Website:** [tgs2025.fi](https://tgs2025.fi)
 
 ---
 
-Rakennettu ❤️:llä käyttäen Next.js 14 & Tailwind CSS
+Built with ❤️ using Next.js 15, React 19 & Modern Web Technologies

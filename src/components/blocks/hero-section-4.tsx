@@ -241,7 +241,7 @@ export function HeroSection() {
 
                                     <div className="logo-container">
                                         <Image
-                                            className="mx-auto h-5 w-fit dark:invert object-contain"
+                                            className="mx-auto h-auto w-fit dark:invert object-contain"
                                             src="/images/logos/prospectum.png"
                                             alt="Prospectum Logo"
                                             height={20}
