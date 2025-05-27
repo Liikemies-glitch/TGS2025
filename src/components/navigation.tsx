@@ -13,6 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { MobileMenu } from "@/components/ui/mobile-menu"
+import { ShimmerButton } from "@/components/ui/shimmer-button"
 
 export const Navigation = () => {
     return (
@@ -125,9 +126,25 @@ export const Navigation = () => {
                             </NavigationMenu>
                         </div>
 
-                        <div className="flex items-center space-x-2">
-                            <MobileMenu />
-                            <ThemeToggle />
+                        <div className="flex items-center space-x-4">
+                            {/* CTA Button - Desktop */}
+                            <div className="hidden md:block">
+                                <ShimmerButton
+                                    className="px-6 py-2 text-sm font-medium"
+                                    shimmerColor="#ffffff"
+                                    background="hsl(var(--primary))"
+                                    borderRadius="8px"
+                                >
+                                    <Link href="/contact" className="text-white">
+                                        Get Started
+                                    </Link>
+                                </ShimmerButton>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                                <MobileMenu />
+                                <ThemeToggle />
+                            </div>
                         </div>
                     </div>
                 </div>
