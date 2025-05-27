@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { Logo } from '@/components/logo'
 import { cn } from '@/lib/utils'
 import {
   NavigationMenu,
@@ -177,12 +178,4 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
-const Logo = ({ className }: { className?: string }) => {
-    return (
-        <div className={cn("flex items-center space-x-2", className)}>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                The Good Side
-            </div>
-        </div>
-    )
-} 
+ 
