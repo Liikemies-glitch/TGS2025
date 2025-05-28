@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { EtherealShadow } from "@/components/ui/ethereal-shadow";
 
 interface Testimonial {
   id: string;
@@ -120,24 +121,6 @@ const testimonials: Testimonial[] = [
 ];
 
 const TESTIMONIALS_PER_PAGE = 9;
-
-// Background floating elements
-const FloatingElement = ({ delay, duration, className }: { delay: number; duration: number; className: string }) => (
-  <motion.div
-    className={`absolute rounded-full opacity-20 ${className}`}
-    animate={{
-      y: [-20, 20, -20],
-      x: [-10, 10, -10],
-      rotate: [0, 180, 360],
-    }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-);
 
 const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
@@ -306,36 +289,75 @@ export function TestimonialsSection() {
 
   return (
     <section className="relative pt-16 pb-16 md:pt-24 md:pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <FloatingElement 
-          delay={0} 
-          duration={8} 
-          className="top-20 left-10 w-32 h-32 bg-blue-600/10 dark:bg-blue-400/10" 
-        />
-        <FloatingElement 
-          delay={2} 
-          duration={12} 
-          className="top-40 right-20 w-24 h-24 bg-purple-600/10 dark:bg-purple-400/10" 
-        />
-        <FloatingElement 
-          delay={4} 
-          duration={10} 
-          className="bottom-40 left-20 w-20 h-20 bg-green-600/10 dark:bg-green-400/10" 
-        />
-        <FloatingElement 
-          delay={6} 
-          duration={14} 
-          className="bottom-20 right-10 w-28 h-28 bg-orange-600/10 dark:bg-orange-400/10" 
-        />
-        <FloatingElement 
-          delay={1} 
-          duration={9} 
-          className="top-60 left-1/2 w-16 h-16 bg-pink-600/10 dark:bg-pink-400/10" 
-        />
-      </div>
+      {/* Ethereal Shadow Background Effect */}
+      <EtherealShadow 
+        color="rgba(59, 130, 246, 0.15)"
+        animation={{ scale: 95, speed: 25 }}
+        noise={{ opacity: 0.08, scale: 2.2 }}
+        className="absolute inset-0"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      {/* Additional smooth overlay for ultra-seamless transition */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(ellipse at top, 
+            hsl(var(--background) / 0.4) 0%, 
+            hsl(var(--background) / 0.3) 20%, 
+            hsl(var(--background) / 0.2) 40%, 
+            hsl(var(--background) / 0.1) 60%, 
+            transparent 80%
+          )`
+        }}
+      />
+
+      {/* Gradient mask to morph from solid background above */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom, 
+            hsl(var(--background)) 0%, 
+            hsl(var(--background) / 0.98) 5%, 
+            hsl(var(--background) / 0.95) 10%, 
+            hsl(var(--background) / 0.9) 15%, 
+            hsl(var(--background) / 0.8) 20%, 
+            hsl(var(--background) / 0.7) 25%, 
+            hsl(var(--background) / 0.6) 30%, 
+            hsl(var(--background) / 0.5) 35%, 
+            hsl(var(--background) / 0.4) 40%, 
+            hsl(var(--background) / 0.3) 45%, 
+            hsl(var(--background) / 0.2) 50%, 
+            hsl(var(--background) / 0.15) 55%, 
+            hsl(var(--background) / 0.1) 60%, 
+            hsl(var(--background) / 0.05) 70%, 
+            hsl(var(--background) / 0.02) 80%, 
+            transparent 90%
+          )`
+        }}
+      />
+
+      {/* Subtle background overlay for smooth transition */}
+      <motion.div
+        className="absolute inset-0 bg-background/15"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ 
+          duration: 4,
+          ease: "easeOut",
+          delay: 2
+        }}
+      />
+
+      <motion.div 
+        className="relative mx-auto max-w-7xl px-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ 
+          duration: 1.5,
+          ease: "easeOut",
+          delay: 0.3
+        }}
+      >
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -345,7 +367,7 @@ export function TestimonialsSection() {
           className="max-w-3xl text-center mx-auto mb-16"
         >
           <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-3">
-            Wall of Love
+            Wall of pure awesomeness
           </p>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl mb-4">
             What our <span className="text-blue-600 dark:text-blue-400">clients</span> say
@@ -453,7 +475,7 @@ export function TestimonialsSection() {
             </span>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 } 
