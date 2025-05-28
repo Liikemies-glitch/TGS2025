@@ -4,9 +4,8 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Calendar, ArrowRight, Sparkles, Target, Users, ArrowUpRight } from 'lucide-react'
+import { Sparkles, Target, Users, ArrowUpRight } from 'lucide-react'
 import Cal, { getCalApi } from "@calcom/embed-react"
 
 // Animated Sparkles Component
@@ -137,14 +136,14 @@ export function CTASection() {
           </div>
           
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-            Let's Build Something
+            Let&apos;s Build Something
             <span className="block bg-gradient-to-r from-primary via-brand-blue to-primary bg-clip-text text-transparent">
               Amazing Together
             </span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Book a free consultation call and let's discuss how we can transform your ideas into reality. 
+            Book a free consultation call and let&apos;s discuss how we can transform your ideas into reality. 
             No commitment, just pure value and insights.
           </p>
         </motion.div>
@@ -186,14 +185,14 @@ export function CTASection() {
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-medium mb-4">Intro Meeting Agenda</h3>
-                    <p className="text-muted-foreground">What we'll cover in our 1-hour consultation call</p>
+                    <p className="text-muted-foreground">What we&apos;ll cover in our 1-hour consultation call</p>
                   </div>
                   
                   <div className="space-y-6 max-w-lg mx-auto w-full">
                     {[
                       {
                         title: "Your Current Situation",
-                        description: "We'll discuss your current situation, goals and needs to understand exactly what you're looking to achieve",
+                        description: "We&apos;ll discuss your current situation, goals and needs to understand exactly what you&apos;re looking to achieve",
                         icon: Target,
                         step: "1"
                       },
@@ -205,7 +204,7 @@ export function CTASection() {
                       },
                       {
                         title: "Next Steps Forward",
-                        description: "If we're a good fit, we'll outline the next steps and how we can continue working together",
+                        description: "If we&apos;re a good fit, we&apos;ll outline the next steps and how we can continue working together",
                         icon: ArrowUpRight,
                         step: "3"
                       }
