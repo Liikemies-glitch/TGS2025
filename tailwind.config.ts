@@ -62,6 +62,11 @@ const config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			'brand-blue': {
+  				DEFAULT: 'hsl(var(--brand-blue))',
+  				light: 'hsl(var(--brand-blue-light))',
+  				dark: 'hsl(var(--brand-blue-dark))',
   			}
   		},
   		borderRadius: {

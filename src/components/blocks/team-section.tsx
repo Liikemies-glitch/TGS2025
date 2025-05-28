@@ -42,11 +42,11 @@ export function TeamSection() {
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="max-w-3xl text-left mb-8">
-          <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-3">
+          <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-3">
             The Team
           </p>
           <h2 className="text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl">
-            Meet the <span className="text-blue-600 dark:text-blue-400">experts</span> behind your success
+            Meet the <span className="text-brand-blue dark:text-brand-blue-light">experts</span> behind your success
           </h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
             Our diverse team brings together years of experience in design, development, and strategy.

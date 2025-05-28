@@ -133,7 +133,7 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
     >
       {/* Featured label */}
       <div className="text-center mb-8">
-        <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-2">
+        <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-2">
           Featured Review
         </p>
         <div className="flex justify-center gap-1 mb-4">
@@ -155,14 +155,14 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
             <div
               className="absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom opacity-80"
               style={{
-                background: 'radial-gradient(circle, #2563eb, transparent 10%)',
+                background: 'radial-gradient(circle, hsl(var(--brand-blue-dark)), transparent 10%)',
                 animationDuration: '8s',
               }}
             />
             <div
               className="absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top opacity-80"
               style={{
-                background: 'radial-gradient(circle, #2563eb, transparent 10%)',
+                background: 'radial-gradient(circle, hsl(var(--brand-blue-dark)), transparent 10%)',
                 animationDuration: '8s',
               }}
             />
@@ -184,7 +184,7 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
                     alt={testimonial.name}
                     width={64}
                     height={64}
-                    className="w-16 h-16 rounded-full object-cover ring-4 ring-border/30 group-hover:ring-blue-600/30 transition-all duration-300"
+                    className="w-16 h-16 rounded-full object-cover ring-4 ring-border/30 group-hover:ring-brand-blue/30 transition-all duration-300"
                   />
                 </div>
                 <div className="text-center">
@@ -366,11 +366,11 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl text-center mx-auto mb-16"
         >
-          <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-3">
+          <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-3">
             Wall of pure awesomeness
           </p>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl mb-4">
-            What our <span className="text-blue-600 dark:text-blue-400">clients</span> say
+            What our <span className="text-brand-blue dark:text-brand-blue-light">clients</span> say
           </h2>
           <p className="text-base text-muted-foreground md:text-lg leading-relaxed">
             Don&apos;t just take our word for it. Here&apos;s what our amazing clients have to say about working with us.
@@ -426,7 +426,7 @@ export function TestimonialsSection() {
                     onClick={() => handlePageClick(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentPage
-                        ? 'bg-blue-600 dark:bg-blue-400 scale-125 shadow-lg shadow-blue-600/25'
+                        ? 'bg-brand-blue dark:bg-brand-blue-light scale-125 shadow-lg shadow-brand-blue/25'
                         : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                     }`}
                     aria-label={`Go to page ${index + 1}`}
@@ -476,6 +476,9 @@ export function TestimonialsSection() {
           </div>
         </motion.div>
       </motion.div>
+      
+      {/* Bottom Fade Effect for smooth transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 } 

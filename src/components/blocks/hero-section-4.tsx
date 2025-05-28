@@ -105,7 +105,7 @@ export function HeroSection() {
                                     </AnnouncementButton>
                                 </div>
                                 
-                                <h1 className="mt-6 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:max-w-none xl:text-7xl">DIY got you here. <span className="text-blue-600 dark:text-blue-400">Strategic design</span> gets you further.</h1>
+                                <h1 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl xl:text-7xl">DIY got you here. <span className="text-brand-blue dark:text-brand-blue-light">Strategic design</span> gets you further.</h1>
                                 
                                 <p className="mt-8 max-w-2xl text-pretty text-lg lg:max-w-none">We transform SaaS products into market leaders through strategic design and product thinking. Our track record speaks for itself - we&apos;ve helped over twenty companies achieve breakthrough growth.</p>
 

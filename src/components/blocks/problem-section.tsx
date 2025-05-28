@@ -70,7 +70,7 @@ export function ProblemSection() {
               <div key={index} className="space-y-8">
                 {/* Problem Text */}
                 <div className="text-left space-y-4">
-                  <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide">
+                  <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide">
                     {index === 0 ? "The Problem" : "The Solution"}
                   </p>
                   <h3 className="text-2xl font-medium">
@@ -156,7 +156,7 @@ export function ProblemSection() {
                       }}
                     >
                       <div className="space-y-4">
-                        <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide">
+                        <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide">
                           {index === 0 ? "The Problem" : "The Solution"}
                         </p>
                         <h3 className="text-3xl font-medium md:text-4xl lg:text-3xl leading-tight">

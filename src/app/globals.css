@@ -32,6 +32,11 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    /* Unified Brand Blue Colors */
+    --brand-blue: 217 91% 60%;        /* #3b82f6 equivalent */
+    --brand-blue-light: 213 93% 68%;  /* #60a5fa equivalent */
+    --brand-blue-dark: 221 83% 53%;   /* #2563eb equivalent */
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -59,6 +64,11 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Unified Brand Blue Colors for Dark Mode */
+    --brand-blue: 213 93% 68%;        /* Lighter blue for dark mode */
+    --brand-blue-light: 217 91% 75%;  /* Even lighter for dark mode */
+    --brand-blue-dark: 217 91% 60%;   /* Standard blue for dark mode */
   }
   .theme {
 
@@ -98,6 +108,21 @@
     justify-content: center;
     flex-shrink: 0;
   }
+
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 20s linear infinite;
+  }
+
+  .dark .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+  }
 }
 
 @theme inline {
@@ -118,6 +143,14 @@
     }
   100% {
     transform: translateZ(0) rotate(360deg);
+    }
+  }
+  @keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+    }
+  100% {
+    transform: translate(40px, 40px);
     }
   }
 }

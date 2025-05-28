@@ -17,7 +17,7 @@ export function AnnouncementButton({
   children, 
   className,
   href,
-  color = "#60a5fa",
+  color = "hsl(var(--brand-blue-light))",
   speed = "4s",
   ...props 
 }: AnnouncementButtonProps) {
@@ -81,7 +81,7 @@ export function AnnouncementButton({
                     <Avatar 
                       className={cn(
                         "border-2 border-background transition-all duration-200",
-                        "hover:scale-105 hover:border-blue-500/50 hover:z-10"
+                        "hover:scale-105 hover:border-brand-blue/50 hover:z-10"
                       )}
                     >
                       <AvatarImage src={member.src} alt={member.name} />

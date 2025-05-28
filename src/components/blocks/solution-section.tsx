@@ -63,7 +63,7 @@ const ctaItems = [
         </Button>
       </div>
     ),
-    icon: <ArrowRight className="w-4 h-4 text-blue-600" />,
+    icon: <ArrowRight className="w-4 h-4 text-brand-blue" />,
     hasPersistentHover: true,
   },
 ];
@@ -74,11 +74,11 @@ export function SolutionSection() {
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="max-w-3xl text-left mb-8">
-          <p className="text-xs text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wide mb-3">
+          <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-3">
             The Solution
           </p>
           <h2 className="text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl">
-            Real <span className="text-blue-600 dark:text-blue-400">Results</span>. Real <span className="text-blue-600 dark:text-blue-400">Growth</span>.
+            Real <span className="text-brand-blue dark:text-brand-blue-light">Results</span>. Real <span className="text-brand-blue dark:text-brand-blue-light">Growth</span>.
           </h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
             From revenue and retention to ROI — we design with business outcomes in mind. Here&apos;s what happens when UX strategy meets execution.
@@ -113,7 +113,7 @@ export function SolutionSection() {
                     <div
                       className="absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full z-0 animate-star-movement-bottom opacity-100"
                       style={{
-                        background: 'radial-gradient(circle, #60a5fa, transparent 10%)',
+                        background: 'radial-gradient(circle, hsl(var(--brand-blue-light)), transparent 10%)',
                         animationDuration: '4s',
                         animationTimingFunction: 'linear',
                         animationIterationCount: 'infinite',
@@ -122,7 +122,7 @@ export function SolutionSection() {
                     <div
                       className="absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full z-0 animate-star-movement-top opacity-100"
                       style={{
-                        background: 'radial-gradient(circle, #60a5fa, transparent 10%)',
+                        background: 'radial-gradient(circle, hsl(var(--brand-blue-light)), transparent 10%)',
                         animationDuration: '4s',
                         animationTimingFunction: 'linear',
                         animationIterationCount: 'infinite',
