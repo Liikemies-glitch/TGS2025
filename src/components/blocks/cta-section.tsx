@@ -85,8 +85,8 @@ export function CTASection() {
       const cal = await getCalApi({"namespace":"cumucore-ux-research-interview"});
       cal("ui", {
         "cssVarsPerTheme": {
-          "light": {"cal-brand": "#2d3748", "cal-brand-emphasis": "#2d3748"}, 
-          "dark": {"cal-brand": "#2d3748", "cal-brand-emphasis": "#2d3748"}
+          "light": {"cal-brand": "#3b82f6", "cal-brand-emphasis": "#2563eb"}, 
+          "dark": {"cal-brand": "#60a5fa", "cal-brand-emphasis": "#3b82f6"}
         },
         "hideEventTypeDetails": true,
         "layout": "month_view"
@@ -294,45 +294,28 @@ export function CTASection() {
               </div>
               
               {/* Cal.com React Component */}
-              <div className="relative flex-1 bg-card cal-embed-wrapper">
+              <div className="relative flex-1 bg-card flex flex-col">
                 <div 
-                  className="w-full h-full cal-embed-container"
-                  style={{
-                    overflow: 'hidden',
-                    position: 'relative'
+                  className="flex-1"
+                  style={{ 
+                    height: '722px',
+                    overflow: 'auto',
+                    width: '100%'
                   }}
                 >
-                  <div
+                  <Cal 
+                    namespace="cumucore-ux-research-interview"
+                    calLink="aksel-suokas/cumucore-ux-research-interview"
                     style={{
-                      width: 'calc(100% + 20px)', // Add extra width to push scrollbar out of view
-                      height: '100%',
-                      overflow: 'auto',
-                      marginRight: '-20px' // Pull back to hide the scrollbar
+                      width: "100%",
+                      height: "722px",
+                      border: "none"
                     }}
-                  >
-                    <Cal 
-                      namespace="cumucore-ux-research-interview"
-                      calLink="aksel-suokas/cumucore-ux-research-interview"
-                      style={{
-                        width:"100%",
-                        height:"calc(800px - 78px)",
-                        border: "none",
-                        outline: "none"
-                      }}
-                      config={{"layout":"month_view"}}
-                    />
-                  </div>
+                    config={{
+                      layout: "month_view"
+                    }}
+                  />
                 </div>
-                <style jsx global>{`
-                  /* Ensure the wrapper clips any overflow */
-                  .cal-embed-wrapper {
-                    overflow: hidden !important;
-                  }
-                  
-                  .cal-embed-container {
-                    overflow: hidden !important;
-                  }
-                `}</style>
               </div>
             </div>
           </motion.div>
