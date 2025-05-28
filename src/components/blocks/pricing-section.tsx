@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import type { LucideIcon } from "lucide-react"
-import { Star, CheckCircle, Palette, Users, Zap, Target, MessageSquare } from "lucide-react"
+import { Star, Palette, Users, Zap, Target, MessageSquare } from "lucide-react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
@@ -22,6 +22,7 @@ export interface Testimonial {
 
 export interface Feature {
   text: string
+  icon: LucideIcon
 }
 
 export interface Benefit {
@@ -51,7 +52,6 @@ export interface SinglePricingCardProps {
 
   // Features
   features: Feature[]
-  featuresIcon: LucideIcon
   featuresTitle?: string
   featuresBadge?: {
     icon: LucideIcon
@@ -93,7 +93,6 @@ export function SinglePricingCard({
   price,
   benefits,
   features,
-  featuresIcon,
   featuresTitle = "Included Features",
   primaryButton,
   testimonials,
@@ -134,7 +133,6 @@ export function SinglePricingCard({
               price={price}
               benefits={benefits}
               features={features}
-              featuresIcon={featuresIcon}
               featuresTitle={featuresTitle}
               primaryButton={primaryButton}
               testimonials={testimonials}
@@ -152,7 +150,6 @@ export function SinglePricingCard({
             price={price}
             benefits={benefits}
             features={features}
-            featuresIcon={featuresIcon}
             featuresTitle={featuresTitle}
             primaryButton={primaryButton}
             testimonials={testimonials}
@@ -168,7 +165,7 @@ export function SinglePricingCard({
 }
 
 interface SinglePricingCardContentProps
-  extends Omit<SinglePricingCardProps, "className" | "maxWidth" | "testimonialRotationSpeed"> {
+  extends Omit<SinglePricingCardProps, "className" | "maxWidth" | "testimonialRotationSpeed" | "featuresIcon"> {
   currentTestimonialIndex: number
   isInView: boolean
   cardClassName?: string
@@ -181,7 +178,6 @@ function SinglePricingCardContent({
   price,
   benefits,
   features,
-  featuresIcon,
   featuresTitle,
   primaryButton,
   testimonials,
@@ -191,7 +187,6 @@ function SinglePricingCardContent({
   cardClassName,
 }: SinglePricingCardContentProps) {
   const BadgeIcon = badge?.icon
-  const FeaturesIcon = featuresIcon
   const PrimaryButtonIcon = primaryButton.icon
 
   return (
@@ -257,20 +252,24 @@ function SinglePricingCardContent({
           </div>
 
           <div className="space-y-3 mb-6">
-            {features.map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={animationEnabled ? { opacity: 0, x: 20 } : { opacity: 1, x: 0 }}
-                animate={animationEnabled && isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
-                className="flex items-center gap-3"
-              >
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                  <FeaturesIcon className="h-3 w-3 text-primary" />
-                </div>
-                <span className="text-sm">{feature.text}</span>
-              </motion.div>
-            ))}
+            {features.map((feature, i) => {
+              const FeatureIcon = feature.icon
+              
+              return (
+                <motion.div
+                  key={i}
+                  initial={animationEnabled ? { opacity: 0, x: 20 } : { opacity: 1, x: 0 }}
+                  animate={animationEnabled && isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
+                    <FeatureIcon className="h-3 w-3 text-primary" />
+                  </div>
+                  <span className="text-sm">{feature.text}</span>
+                </motion.div>
+              )
+            })}
           </div>
 
           {testimonials.length > 0 && (
@@ -412,41 +411,14 @@ export function PricingSection() {
             price={{
               current: "110€/hour"
             }}
-            benefits={[
-              {
-                text: "Expert UX/UI guidance and strategy",
-                icon: Target
-              },
-              {
-                text: "User research and usability testing",
-                icon: Users
-              },
-              {
-                text: "Design system development",
-                icon: Palette
-              },
-              {
-                text: "Rapid prototyping and validation",
-                icon: Zap
-              },
-              {
-                text: "Team training and workshops",
-                icon: MessageSquare
-              }
-            ]}
+            benefits={[]}
             features={[
-              { text: "Comprehensive UX audit and analysis" },
-              { text: "User journey mapping and personas" },
-              { text: "Wireframing and prototyping" },
-              { text: "Visual design and UI components" },
-              { text: "Usability testing and validation" },
-              { text: "Design system documentation" },
-              { text: "Accessibility compliance review" },
-              { text: "Performance optimization recommendations" },
-              { text: "Team collaboration and handoff" },
-              { text: "Post-launch support and iteration" }
+              { text: "Expert UX/UI guidance and strategy", icon: Target },
+              { text: "User research and usability testing", icon: Users },
+              { text: "Design system development", icon: Palette },
+              { text: "Rapid prototyping and validation", icon: Zap },
+              { text: "Team training and workshops", icon: MessageSquare }
             ]}
-            featuresIcon={CheckCircle}
             featuresTitle="What's Included"
             primaryButton={{
               text: "Book Consultation",
