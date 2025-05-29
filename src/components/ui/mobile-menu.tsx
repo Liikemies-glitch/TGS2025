@@ -45,34 +45,9 @@ const menuSections: MenuSection[] = [
     title: "Services",
     items: [
       {
-        href: "/services/development",
-        title: "Development",
-        description: "Full-stack development services from concept to deployment."
-      },
-      {
-        href: "/services/design",
-        title: "Design",
-        description: "User-centered design and UX/UI services for digital products."
-      },
-      {
-        href: "/services/strategy",
-        title: "Strategy",
-        description: "Digital strategy and technology roadmap planning."
-      },
-      {
-        href: "/services/support",
-        title: "Support",
-        description: "Ongoing maintenance and technical support services."
-      },
-      {
-        href: "/services/training",
-        title: "Training",
-        description: "Team training and knowledge transfer programs."
-      },
-      {
-        href: "/services/audit",
-        title: "Technical Audit",
-        description: "Comprehensive technical audits and performance optimization."
+        href: "/services",
+        title: "Our Services",
+        description: "Comprehensive solutions to help your business thrive in the digital world."
       }
     ]
   },
