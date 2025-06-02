@@ -67,20 +67,34 @@ export const Navigation = () => {
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Services</NavigationMenuTrigger>
                                         <NavigationMenuContent>
-                                            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
-                                                <NavigationMenuLink asChild>
-                                                    <Link
-                                                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                        href="/services"
-                                                    >
-                                                        <div className="mb-2 mt-4 text-lg font-medium">
-                                                            Our Services
-                                                        </div>
-                                                        <p className="text-sm leading-tight text-muted-foreground">
-                                                            Comprehensive solutions to help your business thrive in the digital world.
-                                                        </p>
-                                                    </Link>
-                                                </NavigationMenuLink>
+                                            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                                                <div className="row-span-5">
+                                                    <NavigationMenuLink asChild>
+                                                        <Link
+                                                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                                            href="/services"
+                                                        >
+                                                            <div className="mb-2 mt-4 text-lg font-medium">
+                                                                Our Services
+                                                            </div>
+                                                            <p className="text-sm leading-tight text-muted-foreground">
+                                                                Comprehensive solutions to help your business thrive in the digital world.
+                                                            </p>
+                                                        </Link>
+                                                    </NavigationMenuLink>
+                                                </div>
+                                                <ListItem href="/services/ui-ux-design" title="UI/UX Design">
+                                                    Create intuitive and beautiful user experiences that drive engagement.
+                                                </ListItem>
+                                                <ListItem href="/services/user-research" title="User Research">
+                                                    Data-driven insights that inform design decisions and validate assumptions.
+                                                </ListItem>
+                                                <ListItem href="/services/strategic-positioning" title="Strategic Positioning">
+                                                    Position your product for market success through strategic design.
+                                                </ListItem>
+                                                <ListItem href="/services/user-journeys" title="User Journeys">
+                                                    Optimize every touchpoint from landing pages to user activation and beyond.
+                                                </ListItem>
                                             </div>
                                         </NavigationMenuContent>
                                     </NavigationMenuItem>

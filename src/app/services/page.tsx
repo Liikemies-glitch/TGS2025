@@ -3,105 +3,52 @@
 import React from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { useState } from "react"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CTASection } from "@/components/blocks/cta-section"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { ProgressiveBlur } from "@/components/ui/progressive-blur"
-import { cn } from "@/lib/utils"
 import { 
   Palette, 
-  BarChart3, 
-  Users, 
-  Layers, 
-  GitBranch, 
   Search, 
-  UserCheck, 
-  Map, 
   Target, 
-  MessageSquare, 
+  Map,
   ArrowUpRight,
-  Settings
+  Settings,
+  Layers,
+  ArrowRight
 } from "lucide-react"
 
-// Service categories data
+// Service categories data for linked boxes
 const serviceCategories = [
   {
     title: "UI/UX Design",
-    description: "Creating intuitive and beautiful user experiences that drive engagement and conversion.",
+    description: "Create intuitive and beautiful user experiences that drive engagement and conversion.",
     icon: Palette,
-    services: [
-      {
-        name: "Dashboards",
-        description: "Data-driven interfaces that make complex information accessible and actionable.",
-        icon: BarChart3
-      },
-      {
-        name: "User Experience",
-        description: "End-to-end UX design focused on user needs and business objectives.",
-        icon: Users
-      },
-      {
-        name: "Design Systems",
-        description: "Scalable design systems that ensure consistency across all touchpoints.",
-        icon: Layers
-      },
-      {
-        name: "User Flows",
-        description: "Optimized user journeys that guide users toward their goals efficiently.",
-        icon: GitBranch
-      }
-    ]
+    href: "/services/ui-ux-design",
+    features: ["Dashboard Design", "User Experience Design", "Design Systems", "User Flow Optimization"]
   },
   {
     title: "User Research",
     description: "Data-driven insights that inform design decisions and validate product assumptions.",
     icon: Search,
-    services: [
-      {
-        name: "User Research",
-        description: "Comprehensive user studies to understand behaviors, needs, and pain points.",
-        icon: Search
-      },
-      {
-        name: "Persona Development",
-        description: "Detailed user personas based on real data and research insights.",
-        icon: UserCheck
-      },
-      {
-        name: "Journey Mapping",
-        description: "Visual representations of user interactions across all touchpoints.",
-        icon: Map
-      }
-    ]
+    href: "/services/user-research",
+    features: ["User Interviews", "Usability Testing", "Persona Development", "Journey Mapping"]
   },
   {
     title: "Strategic Positioning",
-    description: "Positioning your product for market success through strategic design and messaging.",
+    description: "Position your product for market success through strategic design and messaging.",
     icon: Target,
-    services: [
-      {
-        name: "Product Positioning",
-        description: "Strategic positioning that differentiates your product in the market.",
-        icon: Target
-      },
-      {
-        name: "Market Differentiation",
-        description: "Identifying and leveraging unique value propositions.",
-        icon: Settings
-      },
-      {
-        name: "Value Proposition",
-        description: "Clear, compelling value propositions that resonate with your target audience.",
-        icon: MessageSquare
-      },
-      {
-        name: "Messaging Framework",
-        description: "Consistent messaging that communicates your value across all channels.",
-        icon: MessageSquare
-      }
-    ]
+    href: "/services/strategic-positioning",
+    features: ["Product Positioning", "Market Differentiation", "Value Proposition", "Messaging Framework"]
+  },
+  {
+    title: "User Journeys",
+    description: "Optimize every touchpoint from landing pages to user activation and beyond.",
+    icon: Map,
+    href: "/services/user-journeys",
+    features: ["Landing Page Optimization", "User Onboarding", "User Activation", "Conversion Funnels"]
   }
 ]
 
@@ -138,8 +85,6 @@ const caseStudies = [
 ]
 
 export default function ServicesPage() {
-  const [activeTab, setActiveTab] = useState(0)
-
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -163,119 +108,85 @@ export default function ServicesPage() {
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-8">
               We support you end-to-end in developing your SaaS product - from UI design and user flows to strategic product positioning.
             </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                Get Started
+              </button>
+              <button className="px-6 py-3 border border-border rounded-lg text-sm font-medium hover:bg-muted/50 transition-colors">
+                View Our Work
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Tabbed Services Section */}
-      <section className="pt-8 pb-32">
+      {/* Services Grid Section */}
+      <section className="py-20">
         <div className="mx-auto max-w-6xl px-6">
-          {/* Tab Navigation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
-          >
-            <div className="inline-flex items-center p-1 rounded-xl bg-muted/50 border border-border/50 backdrop-blur-sm">
-              {serviceCategories.map((category, index) => {
-                const IconComponent = category.icon
-                return (
-                  <button
-                    key={category.title}
-                    onClick={() => setActiveTab(index)}
-                    className={cn(
-                      "relative flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300",
-                      activeTab === index 
-                        ? 'bg-background text-foreground shadow-sm border border-border/50' 
-                        : 'text-muted-foreground hover:text-foreground'
-                    )}
-                  >
-                    <IconComponent className="w-4 h-4" />
-                    <span className="hidden sm:inline">{category.title}</span>
-                    <span className="sm:hidden">{category.title.split(' ')[0]}</span>
-                    
-                    {/* Active indicator */}
-                    {activeTab === index && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 bg-background border border-border/50 rounded-lg shadow-sm"
-                        style={{ zIndex: -1 }}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </button>
-                )
-              })}
-            </div>
-            
-            <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
-              I want more information
-            </button>
-          </motion.div>
-
-          {/* Tab Content */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
-            {/* Content Container with App-like styling */}
-            <div className="relative rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm overflow-hidden">
-              {/* Header */}
-              <div className="border-b border-border/50 bg-muted/20 px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                    {React.createElement(serviceCategories[activeTab].icon, { className: "w-5 h-5 text-primary" })}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">{serviceCategories[activeTab].title}</h3>
-                    <p className="text-sm text-muted-foreground">{serviceCategories[activeTab].description}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Services Grid */}
-              <div className="p-6">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {serviceCategories[activeTab].services.map((service, serviceIndex) => {
-                    const ServiceIcon = service.icon
-                    return (
-                      <motion.div
-                        key={service.name}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: serviceIndex * 0.1 }}
-                      >
-                        <Card className="h-full group hover:shadow-md transition-all duration-300 border-border/30 hover:border-primary/30 bg-background/50">
-                          <CardHeader className="pb-3">
-                            <div className="p-2 rounded-md bg-primary/5 w-fit mb-2 group-hover:bg-primary/10 transition-colors">
-                              <ServiceIcon className="w-4 h-4 text-primary" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {serviceCategories.map((category, index) => {
+              const CategoryIcon = category.icon
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Link href={category.href}>
+                    <Card className="h-full group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 cursor-pointer">
+                      {/* Card Header with Consistent Top Bar */}
+                      <div className="relative p-6 bg-muted/20 border-b border-border/50">
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className="p-3 rounded-xl bg-background/80 backdrop-blur-sm border border-border/50 group-hover:bg-primary/10 group-hover:border-primary/30 transition-all duration-300">
+                              <CategoryIcon className="w-6 h-6 text-primary" />
                             </div>
-                            <CardTitle className="text-base">{service.name}</CardTitle>
-                          </CardHeader>
-                          <CardContent>
-                            <CardDescription className="text-xs leading-relaxed">
-                              {service.description}
-                            </CardDescription>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    )
-                  })}
-                </div>
-              </div>
+                            <div>
+                              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                                {category.title}
+                              </h3>
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {category.description}
+                              </p>
+                            </div>
+                          </div>
+                          <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                        </div>
+                      </div>
 
-              {/* Bottom border fade */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-            </div>
-          </motion.div>
+                      {/* Card Content */}
+                      <CardContent className="p-6">
+                        <div className="space-y-3">
+                          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                            Key Services
+                          </p>
+                          <div className="grid grid-cols-2 gap-2">
+                            {category.features.map((feature) => (
+                              <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary/60 flex-shrink-0" />
+                                {feature}
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="pt-4 flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all duration-300">
+                            Learn more
+                            <ArrowRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </section>
 

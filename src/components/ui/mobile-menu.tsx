@@ -48,6 +48,26 @@ const menuSections: MenuSection[] = [
         href: "/services",
         title: "Our Services",
         description: "Comprehensive solutions to help your business thrive in the digital world."
+      },
+      {
+        href: "/services/ui-ux-design",
+        title: "UI/UX Design",
+        description: "Create intuitive and beautiful user experiences that drive engagement."
+      },
+      {
+        href: "/services/user-research",
+        title: "User Research",
+        description: "Data-driven insights that inform design decisions and validate assumptions."
+      },
+      {
+        href: "/services/strategic-positioning",
+        title: "Strategic Positioning",
+        description: "Position your product for market success through strategic design."
+      },
+      {
+        href: "/services/user-journeys",
+        title: "User Journeys",
+        description: "Optimize every touchpoint from landing pages to user activation and beyond."
       }
     ]
   },

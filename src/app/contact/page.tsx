@@ -1,7 +1,12 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Phone, Mail, Linkedin } from 'lucide-react';
+import React from "react"
+import { motion } from "framer-motion"
+import { 
+  Mail, 
+  Phone, 
+  Linkedin
+} from "lucide-react"
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,6 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { teamMembers } from '@/components/blocks/team-section';
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from 'react';
+import { ContactFormWrapper } from '@/components/ui/contact-form-wrapper';
 
 // Extended team member interface
 interface ExtendedTeamMember {
@@ -102,6 +108,10 @@ export default function ContactPage() {
     document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToContactForm = () => {
+    document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section with Background Effect */}
@@ -130,14 +140,22 @@ export default function ContactPage() {
                   Let&apos;s Talk About Your Product&apos;s{' '}
                   <span className="text-brand-blue dark:text-brand-blue-light">Future</span>
                 </h1>
-                <p className="text-lg text-muted-foreground md:text-xl leading-relaxed">
-                  Book a time or reach out directly. We&apos;re ready to discuss how we can help your SaaS product reach its full potential.
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  Ready to transform your product? Let&apos;s discuss how we can help you create exceptional user experiences that drive results.
                 </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
+                  size="lg"
+                  onClick={scrollToContactForm}
+                  className="px-6"
+                >
+                  Send Message
+                </Button>
+                <Button
+                  variant="outline"
                   size="lg"
                   onClick={scrollToBookingSection}
                   className="px-6"
@@ -219,8 +237,32 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Contact Form Section */}
+      <section id="contact-form-section" className="py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl px-6">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 space-y-4"
+          >
+            <h2 className="text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl">
+              Send us a <span className="text-brand-blue dark:text-brand-blue-light">Message</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Tell us about your project and we&apos;ll get back to you with a personalized proposal.
+            </p>
+          </motion.div>
+
+          {/* Contact Form with Suspense for search params */}
+          <ContactFormWrapper />
+        </div>
+      </section>
+
       {/* Booking Section - Same Background as Rest of Site */}
-      <section id="booking-section" className="py-16 md:py-24 lg:py-32">
+      <section id="booking-section" className="py-16 md:py-24 lg:py-32 border-t border-border/30">
         <div className="mx-auto max-w-6xl px-6">
           {/* Header */}
           <motion.div
@@ -267,7 +309,7 @@ export default function ContactPage() {
       </section>
 
       {/* Team Members Section */}
-      <section id="team-section" className="py-16 md:py-24 lg:py-32">
+      <section id="team-section" className="py-16 md:py-24 lg:py-32 border-t border-border/30">
         <div className="mx-auto max-w-6xl px-6">
           {/* Header */}
           <motion.div

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -14,6 +15,7 @@ interface PricingCalculatorProps {
 }
 
 export function PricingCalculator({ hourlyRate = 110, className }: PricingCalculatorProps) {
+  const router = useRouter()
   const [months, setMonths] = useState(3)
   const [daysPerWeek, setDaysPerWeek] = useState(5)
   const [hoursPerDay] = useState(8) // Fixed at 8 hours per day
@@ -47,6 +49,28 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
 
   const getAllocationPercentage = () => {
     return Math.round((daysPerWeek / 5) * 100)
+  }
+
+  const handleGetStarted = () => {
+    const params = new URLSearchParams({
+      months: months.toString(),
+      daysPerWeek: daysPerWeek.toString(),
+      hourlyRate: hourlyRate.toString()
+    })
+    
+    // Navigate to contact page with parameters
+    router.push(`/contact?${params.toString()}`)
+    
+    // Small delay to ensure navigation completes, then scroll to form
+    setTimeout(() => {
+      const contactFormSection = document.getElementById('contact-form-section')
+      if (contactFormSection) {
+        contactFormSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }, 100)
   }
 
   const savings = getSavingsPercentage()
@@ -129,7 +153,7 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
           </div>
 
           {/* Cost Summary */}
-          <div className="pt-4 border-t border-border/50">
+          <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Total hours:</span>
@@ -192,7 +216,7 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
           </div>
 
           {/* Call to Action */}
-          <Button className="w-full" size="sm">
+          <Button className="w-full" size="sm" onClick={handleGetStarted}>
             <Sparkles className="h-4 w-4 mr-2" />
             Get Started
             <ArrowRight className="h-4 w-4 ml-2" />
