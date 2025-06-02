@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { PricingCalculator } from "@/components/ui/pricing-calculator"
 import type { LucideIcon } from "lucide-react"
 import { Star, Palette, Users, Zap, Target, MessageSquare } from "lucide-react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
@@ -191,9 +192,9 @@ function SinglePricingCardContent({
 
   return (
     <Card className={`overflow-hidden border border-primary/10 relative ${cardClassName || ""}`}>
-      <div className="flex flex-col md:flex-row">
-        {/* Left column - Pricing details */}
-        <div className="p-6 md:p-8 md:w-1/2 flex flex-col">
+      <div className="flex flex-col lg:flex-row">
+        {/* Left column - Pricing details and Features */}
+        <div className="p-6 md:p-8 lg:w-1/2 flex flex-col">
           {badge && (
             <div className="flex items-center mb-4">
               <Badge className="px-3 py-1 bg-primary/5 border-primary/10 text-primary hover:bg-primary/10">
@@ -223,60 +224,40 @@ function SinglePricingCardContent({
             })}
           </div>
 
-          <div className="mt-auto">
-            <Button
-              className="gap-2 group"
-              size="lg"
-              onClick={primaryButton.onClick}
-              asChild={!!primaryButton.href}
-            >
-              {primaryButton.href ? (
-                <Link href={primaryButton.href}>
-                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
-                  <span>{primaryButton.text}</span>
-                </Link>
-              ) : (
-                <>
-                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
-                  <span>{primaryButton.text}</span>
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
+          {/* Features Section */}
+          <div className="mb-6">
+            <div className="flex items-center mb-4">
+              <h4 className="font-semibold">{featuresTitle}</h4>
+            </div>
 
-        {/* Right column - Features */}
-        <div className="p-6 md:p-8 md:w-1/2 md:border-l border-border/50">
-          <div className="flex items-center mb-4">
-            <h4 className="font-semibold">{featuresTitle}</h4>
-          </div>
-
-          <div className="space-y-3 mb-6">
-            {features.map((feature, i) => {
-              const FeatureIcon = feature.icon
-              
-              return (
-                <motion.div
-                  key={i}
-                  initial={animationEnabled ? { opacity: 0, x: 20 } : { opacity: 1, x: 0 }}
-                  animate={animationEnabled && isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                    <FeatureIcon className="h-3 w-3 text-primary" />
-                  </div>
-                  <span className="text-sm">{feature.text}</span>
-                </motion.div>
-              )
-            })}
+            <div className="space-y-3 mb-6">
+              {features.map((feature, i) => {
+                const FeatureIcon = feature.icon
+                
+                return (
+                  <motion.div
+                    key={i}
+                    initial={animationEnabled ? { opacity: 0, x: 20 } : { opacity: 1, x: 0 }}
+                    animate={animationEnabled && isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
+                      <FeatureIcon className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-sm">{feature.text}</span>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
 
+          {/* Testimonials */}
           {testimonials.length > 0 && (
             <>
               <div className="my-6 h-px bg-border/50" />
 
-              <div className="rounded-lg p-4 border border-border/50 relative overflow-hidden min-h-[140px]">
+              <div className="rounded-lg p-4 border border-border/50 relative overflow-hidden min-h-[140px] mb-6">
                 <AnimatePresence mode="wait">
                   {testimonials.map(
                     (testimonial, index) =>
@@ -320,7 +301,7 @@ function SinglePricingCardContent({
               </div>
 
               {testimonials.length > 1 && (
-                <div className="flex justify-center mt-4 gap-1">
+                <div className="flex justify-center mb-6 gap-1">
                   {testimonials.map((_, index) => (
                     <div
                       key={index}
@@ -334,6 +315,33 @@ function SinglePricingCardContent({
               )}
             </>
           )}
+
+          {/* CTA Button */}
+          <div className="mt-auto">
+            <Button
+              className="gap-2 group"
+              size="lg"
+              onClick={primaryButton.onClick}
+              asChild={!!primaryButton.href}
+            >
+              {primaryButton.href ? (
+                <Link href={primaryButton.href}>
+                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                  <span>{primaryButton.text}</span>
+                </Link>
+              ) : (
+                <>
+                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                  <span>{primaryButton.text}</span>
+                </>
+              )}
+            </Button>
+          </div>
+        </div>
+
+        {/* Right column - Calculator */}
+        <div className="p-6 md:p-8 lg:w-1/2 lg:border-l border-border/50">
+          <PricingCalculator hourlyRate={110} />
         </div>
       </div>
     </Card>
@@ -383,14 +391,14 @@ const testimonials: Testimonial[] = [
 export function PricingSection() {
   return (
     <section className="pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-28 lg:pb-24">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl text-left mb-12"
+          className="text-center mb-16"
         >
           <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-3">
             Pricing
@@ -398,13 +406,19 @@ export function PricingSection() {
           <h2 className="text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl mb-4">
             Simple, <span className="text-brand-blue dark:text-brand-blue-light">transparent</span> pricing
           </h2>
-          <p className="text-base text-muted-foreground md:text-lg">
+          <p className="text-base text-muted-foreground md:text-lg max-w-2xl mx-auto">
             No hidden fees, no long-term contracts. Pay for expert UX/UI consultation by the hour.
           </p>
         </motion.div>
 
-        {/* Pricing Card */}
-        <div className="flex justify-start">
+        {/* Full Width Pricing Card with Integrated Calculator */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="w-full"
+        >
           <SinglePricingCard
             title="Strategic design partner"
             subtitle="Professional design consultation to elevate your digital products and user experience"
@@ -427,10 +441,10 @@ export function PricingSection() {
             }}
             testimonials={testimonials}
             testimonialRotationSpeed={4000}
-            maxWidth="max-w-4xl"
+            maxWidth="max-w-full"
             className="py-0 px-0"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   )
