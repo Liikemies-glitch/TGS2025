@@ -12,14 +12,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { teamMembers } from '@/components/blocks/team-section';
+import { teamMembers } from '@/lib/team-data';
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from 'react';
 import { ContactFormWrapper } from '@/components/ui/contact-form-wrapper';
 
 // Extended team member interface
 interface ExtendedTeamMember {
-  quote: string;
+  quote?: string;
   name: string;
   designation: string;
   src: string;

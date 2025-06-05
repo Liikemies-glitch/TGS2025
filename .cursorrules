@@ -67,6 +67,10 @@ Before responding to any request, follow these steps:
 - Implement URL state management with 'nuqs'
 - Minimize client-side state
 
+### Development environment
+
+- Never launch dev server after you have creater
+
 ### Async Request APIs
 
 ```typescript

@@ -2,7 +2,7 @@ import React from 'react'
 import { ShimmerButton } from './shimmer-button'
 import { cn } from '@/lib/utils'
 import { Avatar, AvatarGroup, AvatarImage } from './avatar'
-import { teamMembers } from '@/components/blocks/team-section'
+import { teamMembers } from '@/lib/team-data'
 import { TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from './tooltip'
 
 interface AnnouncementButtonProps {
