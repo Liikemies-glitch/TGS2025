@@ -8,6 +8,8 @@ interface Problem {
   imageSrc: string
 }
 
+
+
 const problems: Problem[] = [
   {
     title: "Unprofessional Design",
@@ -25,8 +27,8 @@ const problems: Problem[] = [
     imageSrc: "/images/illustrations/section-1-problem.png"
   },
   {
-    title: "One Partner, Complete Design System",
-    description: "Replace fragmented agencies and scattered design efforts with a single, unified design partner. We align your product design, product positioning, and user experience under one strategic vision, delivering consistent results that convert prospects into customers and drive measurable revenue growth.",
+    title: "Unified Design Partner",
+    description: "Consolidate your design needs with one partner. We deliver cohesive product design, positioning, and UX that drives conversions and revenue.",
     imageSrc: "/images/illustrations/section-2-solution.png"
   }
 ]
@@ -52,8 +54,14 @@ export function ProblemSection() {
     if (isMobile) return
 
     // Dynamically import Scrollama to avoid SSR issues
-    import('scrollama').then((scrollama) => {
-      const scroller = scrollama.default()
+    import('scrollama').then((scrollamaModule) => {
+      const scroller = (scrollamaModule as { default: () => { 
+        setup: (options: { step: string; offset: number; debug: boolean }) => { 
+          onStepEnter: (callback: (response: { index: number }) => void) => void;
+          destroy: () => void;
+        };
+        destroy: () => void;
+      }}).default()
       scrollerRef.current = scroller
 
       // Setup Scrollama
@@ -71,6 +79,8 @@ export function ProblemSection() {
       return () => {
         scroller.destroy()
       }
+    }).catch((error: unknown) => {
+      console.error('Failed to load scrollama:', error)
     })
 
     // Cleanup on unmount
