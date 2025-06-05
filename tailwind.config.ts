@@ -74,14 +74,17 @@ const config = {
   			md: "calc(var(--radius) - 2px)",
   			sm: "calc(var(--radius) - 4px)",
   		},
-  		animation: {
-  			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
-  			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
+  				animation: {
+			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
+			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
         'star-movement-bottom': 'star-movement-bottom 4s linear infinite',
         'star-movement-top': 'star-movement-top 4s linear infinite',
         'star-movement-bottom-hover': 'star-movement-bottom 2s linear infinite',
         'star-movement-top-hover': 'star-movement-top 2s linear infinite',
-  		},
+        marquee: 'marquee var(--duration) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+        'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
+		},
   		keyframes: {
   			'shimmer-slide': {
   				to: {

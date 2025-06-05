@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, Clock, Search } from "lucide-react";
 import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 
 interface ContractOption {
   title: string;
@@ -44,6 +45,31 @@ const designSpecialties = [
 ];
 
 export function FeaturesSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Disconnect observer after first trigger to prevent re-triggering
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.6, // Trigger when 60% of the section is visible
+        rootMargin: "0px 0px -50px 0px" // Trigger closer to when the content is actually visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const bentoItems = [
         {
       title: "",
@@ -81,14 +107,16 @@ export function FeaturesSection() {
           <h3 className="text-xl md:text-2xl font-medium mb-3 text-foreground">Flexible Contract Options</h3>
           <p className="mb-4">From part-time consulting to full-time team members, we adapt to your needs.</p>
           <div className="h-56 overflow-hidden">
-            <AnimatedList delay={1500}>
-              {contractOptions.map((option, index) => (
-                <div key={index} className="flex items-center justify-between p-2 bg-muted/50 rounded-md">
-                  <span className="font-medium text-sm">{option.title}</span>
-                  <span className="text-xs text-muted-foreground">{option.description}</span>
-                </div>
-              ))}
-            </AnimatedList>
+            {isVisible && (
+              <AnimatedList delay={500}>
+                {contractOptions.map((option, index) => (
+                  <div key={index} className="flex items-center justify-between p-2 bg-muted/50 rounded-md">
+                    <span className="font-medium text-sm">{option.title}</span>
+                    <span className="text-xs text-muted-foreground">{option.description}</span>
+                  </div>
+                ))}
+              </AnimatedList>
+            )}
           </div>
         </div>
       ),
@@ -116,7 +144,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section ref={sectionRef} className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto mb-16">
           <div className="text-left">
