@@ -15,6 +15,7 @@ interface BentoItem {
     tags?: string[];
     colSpan?: number;
     hasPersistentHover?: boolean;
+    className?: string;
 }
 
 interface BentoGridProps {
@@ -35,6 +36,7 @@ export function BentoGrid({ items }: BentoGridProps) {
                     status={item.status}
                     tags={item.tags}
                     hasPersistentHover={item.hasPersistentHover}
+                    className={item.className}
                 />
             ))}
         </ul>
@@ -57,9 +59,9 @@ const getGridArea = (index: number): string => {
     return gridAreas[index] || "md:col-span-6";
 };
 
-const GridItem = ({ area, icon, title, description, meta, tags, hasPersistentHover }: GridItemProps) => {
+const GridItem = ({ area, icon, title, description, meta, tags, hasPersistentHover, className }: GridItemProps) => {
     return (
-        <li className={cn("min-h-[12rem] list-none", area)}>
+        <li className={cn("min-h-[8rem] list-none", area, className)}>
             <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
                 <GlowingEffect
                     spread={40}
