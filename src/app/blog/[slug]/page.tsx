@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog/utils'
 import { BlogPostHeader } from '@/components/blog/BlogPostHeader'
 import { BlogPostContent } from '@/components/blog/BlogPostContent'
