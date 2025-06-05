@@ -10,23 +10,23 @@ interface Problem {
 
 const problems: Problem[] = [
   {
-    title: "Your product's UI/UX lacks professional design, hurting your growth potential.",
-    description: "Amateur design elements and poor user experience create friction that drives potential customers away, limiting your ability to scale and compete in the market.",
+    title: "Unprofessional Design",
+    description: "Your product's UI/UX lacks professional design, limiting growth. Poor user experience creates friction that drives customers away and hampers market competitiveness.",
     imageSrc: "/images/illustrations/section-1-problem.png"
   },
   {
-    title: "Your user journey and content design is fragmented across multiple partners.",
-    description: "Working with different agencies for different aspects of your product creates inconsistencies, resulting in poor user experience and low conversion rates.",
+    title: "Fragmented User Journey",
+    description: "Your user journey is fragmented across multiple partners. Working with different agencies creates inconsistencies, leading to poor experience and low conversions.",
     imageSrc: "/images/illustrations/section-1-problem.png"
   },
   {
-    title: "Poor positioning leads to unclear targets, weak messaging, and scattered development.",
-    description: "Without clear market positioning, your team struggles with mixed priorities, unclear value propositions, and product decisions that don't align with business goals.",
+    title: "Unclear Positioning",
+    description: "Poor positioning results in unclear targets and weak messaging. Without clear market positioning, your team struggles with mixed priorities and misaligned product decisions.",
     imageSrc: "/images/illustrations/section-1-problem.png"
   },
   {
-    title: "We transform SaaS companies into market leaders through unified design strategy.",
-    description: "Our comprehensive design ops process aligns your product, positioning, and user experience to create cohesive solutions that drive growth and market dominance.",
+    title: "End-to-End Design Solution",
+    description: "We deliver comprehensive design solutions that bridge the gap between strategy and execution. Our integrated approach combines product design, brand positioning, and user experience into a unified system that drives measurable business growth.",
     imageSrc: "/images/illustrations/section-2-solution.png"
   }
 ]
@@ -92,7 +92,7 @@ export function ProblemSection() {
                 {/* Problem Text */}
                 <div className="text-left space-y-4">
                   <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide">
-                    {index < 3 ? `Problem ${index + 1}` : "The Solution"}
+                    {index < 3 ? "The Problem" : "The Solution"}
                   </p>
                   <h3 className="text-2xl font-medium">
                     {problem.title}
@@ -144,7 +144,7 @@ export function ProblemSection() {
               >
                 <div className="space-y-6">
                   <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide">
-                    {index < 3 ? `Problem ${index + 1}` : "The Solution"}
+                    {index < 3 ? "The Problem" : "The Solution"}
                   </p>
                   <h3 className="text-3xl font-medium md:text-4xl lg:text-3xl leading-tight">
                     {problem.title}
