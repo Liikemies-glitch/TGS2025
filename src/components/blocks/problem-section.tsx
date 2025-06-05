@@ -34,7 +34,7 @@ const problems: Problem[] = [
 export function ProblemSection() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-  const scrollerRef = useRef<any>(null)
+  const scrollerRef = useRef<{ destroy: () => void } | null>(null)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -63,7 +63,7 @@ export function ProblemSection() {
           offset: 0.5,
           debug: false, // Set to true for debugging
         })
-        .onStepEnter((response: any) => {
+        .onStepEnter((response: { index: number }) => {
           setCurrentStep(response.index)
         })
 

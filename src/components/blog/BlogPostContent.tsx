@@ -99,8 +99,8 @@ const components = {
     </a>
   ),
   // Note: Using img instead of Next.js Image for MDX content flexibility
-  // eslint-disable-next-line @next/next/no-img-element
   img: ({ src, alt, ...props }: ImageProps) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt || ''}
