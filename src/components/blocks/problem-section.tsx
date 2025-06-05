@@ -25,8 +25,8 @@ const problems: Problem[] = [
     imageSrc: "/images/illustrations/section-1-problem.png"
   },
   {
-    title: "End-to-End Design Solution",
-    description: "We deliver comprehensive design solutions that bridge the gap between strategy and execution. Our integrated approach combines product design, brand positioning, and user experience into a unified system that drives measurable business growth.",
+    title: "One Partner, Complete Design System",
+    description: "Replace fragmented agencies and scattered design efforts with a single, unified design partner. We align your product design, product positioning, and user experience under one strategic vision, delivering consistent results that convert prospects into customers and drive measurable revenue growth.",
     imageSrc: "/images/illustrations/section-2-solution.png"
   }
 ]

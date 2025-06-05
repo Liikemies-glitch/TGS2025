@@ -69,6 +69,9 @@ const ctaItems = [
 ];
 
 export function SolutionSection() {
+  // Temporarily hidden
+  return null;
+  
   return (
     <section className="pt-0 pb-16 md:pb-24 lg:pb-32">
       <div className="mx-auto max-w-6xl px-6">
