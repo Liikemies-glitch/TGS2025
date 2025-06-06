@@ -88,7 +88,7 @@ export function FeaturesSection() {
                   alt={`Designer ${index + 1}`}
                   width={224}
                   height={224}
-                  className="w-24 h-24 md:w-56 md:h-56 rounded-lg border-2 border-background object-cover shadow-lg"
+                  className="w-24 h-24 md:w-56 md:h-56 rounded-lg object-cover shadow-lg"
                   style={{ zIndex: teamMembers.length - index }}
                 />
               ))}
@@ -148,6 +148,9 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto mb-16">
           <div className="text-left">
+            <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-6">
+              How it works?
+            </p>
             <h2 className="text-3xl md:text-4xl font-medium mb-4">
               Skip the 3-month hiring process<br />
               and expensive design mistakes
@@ -167,7 +170,7 @@ export function FeaturesSection() {
             <Button
               size="lg"
               className="px-5 text-base">
-              <span className="text-nowrap">Get Started</span>
+              <span className="text-nowrap">Schedule Meeting with Mikki</span>
             </Button>
           </div>
         </div>
@@ -177,7 +180,7 @@ export function FeaturesSection() {
           <Button
             size="lg"
             className="px-5 text-base">
-            <span className="text-nowrap">Get Started</span>
+            <span className="text-nowrap">Schedule Meeting with Mikki</span>
           </Button>
           <p className="text-sm text-muted-foreground mt-2">Start in 2 weeks</p>
         </div>
