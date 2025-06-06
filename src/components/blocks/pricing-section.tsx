@@ -1,25 +1,12 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { PricingCalculator } from "@/components/ui/pricing-calculator"
 import type { LucideIcon } from "lucide-react"
-import { Star, Palette, Users, Zap, Target, MessageSquare } from "lucide-react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-
-export interface Testimonial {
-  id: number
-  name: string
-  role: string
-  company?: string
-  content: string
-  rating: number
-  avatar: string
-}
+import { Palette, Users, Zap, Target, MessageSquare } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { useRef, useState } from "react"
 
 export interface Feature {
   text: string
@@ -74,10 +61,6 @@ export interface SinglePricingCardProps {
     onClick?: () => void
   }
 
-  // Testimonials
-  testimonials: Testimonial[]
-  testimonialRotationSpeed?: number // in milliseconds
-
   // Animation
   animationEnabled?: boolean
 
@@ -96,8 +79,6 @@ export function SinglePricingCard({
   features,
   featuresTitle = "Included Features",
   primaryButton,
-  testimonials,
-  testimonialRotationSpeed = 5000,
   animationEnabled = true,
   className,
   cardClassName,
@@ -105,18 +86,6 @@ export function SinglePricingCard({
 }: SinglePricingCardProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
-
-  // Auto-rotate testimonials
-  useEffect(() => {
-    if (testimonials.length <= 1) return
-
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length)
-    }, testimonialRotationSpeed)
-
-    return () => clearInterval(interval)
-  }, [testimonials.length, testimonialRotationSpeed])
 
   return (
     <div ref={sectionRef} className={`py-12 relative overflow-hidden ${className || ""}`}>
@@ -136,8 +105,6 @@ export function SinglePricingCard({
               features={features}
               featuresTitle={featuresTitle}
               primaryButton={primaryButton}
-              testimonials={testimonials}
-              currentTestimonialIndex={currentTestimonialIndex}
               isInView={isInView}
               animationEnabled={animationEnabled}
               cardClassName={cardClassName}
@@ -153,8 +120,6 @@ export function SinglePricingCard({
             features={features}
             featuresTitle={featuresTitle}
             primaryButton={primaryButton}
-            testimonials={testimonials}
-            currentTestimonialIndex={currentTestimonialIndex}
             isInView={isInView}
             animationEnabled={animationEnabled}
             cardClassName={cardClassName}
@@ -166,8 +131,7 @@ export function SinglePricingCard({
 }
 
 interface SinglePricingCardContentProps
-  extends Omit<SinglePricingCardProps, "className" | "maxWidth" | "testimonialRotationSpeed" | "featuresIcon"> {
-  currentTestimonialIndex: number
+  extends Omit<SinglePricingCardProps, "className" | "maxWidth" | "featuresIcon"> {
   isInView: boolean
   cardClassName?: string
 }
@@ -176,61 +140,80 @@ function SinglePricingCardContent({
   badge,
   title,
   subtitle,
-  price,
   benefits,
   features,
   featuresTitle,
-  primaryButton,
-  testimonials,
-  currentTestimonialIndex,
   isInView,
   animationEnabled,
   cardClassName,
 }: SinglePricingCardContentProps) {
   const BadgeIcon = badge?.icon
-  const PrimaryButtonIcon = primaryButton.icon
+  
+  // State for partnership tracking
+  const [months, setMonths] = useState(3)
+  const [daysPerWeek, setDaysPerWeek] = useState(5)
+  
+  // Calculate if partnership discount applies
+  const getSavingsPercentage = () => {
+    if (months >= 6) return 10
+    return 0
+  }
+  
+  const savings = getSavingsPercentage()
+  const hourlyRate = 110
+  const discountedRate = Math.round(hourlyRate * (1 - savings / 100))
 
   return (
     <Card className={`overflow-hidden border border-primary/10 relative ${cardClassName || ""}`}>
       <div className="flex flex-col lg:flex-row">
         {/* Left column - Pricing details and Features */}
         <div className="p-6 md:p-8 lg:w-1/2 flex flex-col">
-          {badge && (
-            <div className="flex items-center mb-4">
-              <Badge className="px-3 py-1 bg-primary/5 border-primary/10 text-primary hover:bg-primary/10">
-                {BadgeIcon && <BadgeIcon className="h-3.5 w-3.5 mr-1" />}
-                <span>{badge.text}</span>
-              </Badge>
+          {/* Header Section */}
+          <div className="mb-8">
+            {badge && (
+              <div className="flex items-center mb-6">
+                <Badge className="px-3 py-1.5 bg-primary/5 border-primary/10 text-primary hover:bg-primary/10 text-sm font-medium">
+                  {BadgeIcon && <BadgeIcon className="h-3.5 w-3.5 mr-1.5" />}
+                  <span>{badge.text}</span>
+                </Badge>
+              </div>
+            )}
+
+            <div className="space-y-4 mb-6">
+              <h3 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight">{title}</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">{subtitle}</p>
+            </div>
+
+          </div>
+
+          {/* Benefits Section (if any) */}
+          {benefits.length > 0 && (
+            <div className="mb-8">
+              <h4 className="font-semibold text-lg mb-4">Why choose us</h4>
+              <div className="space-y-3">
+                {benefits.map((benefit, index) => {
+                  const BenefitIcon = benefit.icon
+
+                  return (
+                    <div key={index} className="flex items-center gap-3">
+                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                        <BenefitIcon className="h-3 w-3 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="text-sm font-medium">{benefit.text}</span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )}
 
-          <h3 className="text-2xl font-bold mb-2">{title}</h3>
-          <p className="text-muted-foreground mb-4">{subtitle}</p>
-
-          <div className="flex items-baseline mb-6">
-            <span className="text-4xl font-bold">{price.current}</span>
-          </div>
-
-          <div className="space-y-4 mb-6">
-            {benefits.map((benefit, index) => {
-              const BenefitIcon = benefit.icon
-
-              return (
-                <div key={index} className="flex items-center gap-2">
-                  <BenefitIcon className="h-4 w-4 text-primary" />
-                  <span className="text-sm">{benefit.text}</span>
-                </div>
-              )
-            })}
-          </div>
-
           {/* Features Section */}
-          <div className="mb-6">
-            <div className="flex items-center mb-4">
-              <h4 className="font-semibold">{featuresTitle}</h4>
+          <div className="mb-8">
+            <div className="flex items-center mb-6">
+              <h4 className="font-semibold text-lg">{featuresTitle}</h4>
             </div>
 
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2">
               {features.map((feature, i) => {
                 const FeatureIcon = feature.icon
                 
@@ -240,153 +223,68 @@ function SinglePricingCardContent({
                     initial={animationEnabled ? { opacity: 0, x: 20 } : { opacity: 1, x: 0 }}
                     animate={animationEnabled && isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: 0.4 + i * 0.05, duration: 0.5 }}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-4 group"
                   >
-                    <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                      <FeatureIcon className="h-3 w-3 text-primary" />
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors mt-0.5">
+                      <FeatureIcon className="h-3.5 w-3.5 text-primary" />
                     </div>
-                    <span className="text-sm">{feature.text}</span>
+                    <span className="text-sm leading-relaxed font-medium">{feature.text}</span>
                   </motion.div>
                 )
               })}
             </div>
           </div>
 
-          {/* Testimonials */}
-          {testimonials.length > 0 && (
-            <>
-              <div className="my-6 h-px bg-border/50" />
-
-              <div className="rounded-lg p-4 border border-border/50 relative overflow-hidden min-h-[140px] mb-6">
-                <AnimatePresence mode="wait">
-                  {testimonials.map(
-                    (testimonial, index) =>
-                      index === currentTestimonialIndex && (
-                        <motion.div
-                          key={testimonial.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.5 }}
-                          className="absolute inset-0 p-4"
-                        >
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="h-8 w-8 rounded-full overflow-hidden">
-                              <Image
-                                src={testimonial.avatar || "/placeholder.svg"}
-                                alt={`${testimonial.name}'s avatar`}
-                                width={32}
-                                height={32}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div>
-                              <p className="font-medium text-sm">{testimonial.name}</p>
-                              <p className="text-xs text-muted-foreground">
-                                {testimonial.role}
-                                {testimonial.company && ` at ${testimonial.company}`}
-                              </p>
-                            </div>
-                            <div className="ml-auto flex">
-                              {[...Array(testimonial.rating)].map((_, i) => (
-                                <Star key={i} className="h-3 w-3 fill-primary text-primary" />
-                              ))}
-                            </div>
-                          </div>
-                          <p className="text-sm italic line-clamp-3">{testimonial.content}</p>
-                        </motion.div>
-                      ),
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {testimonials.length > 1 && (
-                <div className="flex justify-center mb-6 gap-1">
-                  {testimonials.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`h-1.5 rounded-full transition-all ${
-                        index === currentTestimonialIndex ? "w-4 bg-primary" : "w-1.5 bg-primary/30"
-                      }`}
-                      aria-label={`Testimonial ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-
-          {/* CTA Button */}
+          {/* Pricing Display - Lower Left */}
           <div className="mt-auto">
-            <Button
-              className="gap-2 group"
-              size="lg"
-              onClick={primaryButton.onClick}
-              asChild={!!primaryButton.href}
-            >
-              {primaryButton.href ? (
-                <Link href={primaryButton.href}>
-                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
-                  <span>{primaryButton.text}</span>
-                </Link>
-              ) : (
-                <>
-                  <PrimaryButtonIcon className="h-4 w-4 transition-transform group-hover:rotate-12" />
-                  <span>{primaryButton.text}</span>
-                </>
-              )}
-            </Button>
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-6 border border-primary/10">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground mb-1">Starting at</p>
+                  <div className="flex items-baseline gap-2 min-h-[3rem]">
+                    {savings > 0 ? (
+                      <>
+                        <span className="text-4xl md:text-5xl font-bold text-primary">{discountedRate}€/hour</span>
+                        <span className="text-2xl text-muted-foreground line-through">{hourlyRate}€/hour</span>
+                      </>
+                    ) : (
+                      <span className="text-4xl md:text-5xl font-bold text-foreground">{hourlyRate}€/hour</span>
+                    )}
+                  </div>
+                  <p className="text-lg text-muted-foreground font-medium mt-1">start in 2 weeks</p>
+                </div>
+                <div className="flex flex-col items-end gap-2 min-h-[4rem]">
+                  <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                    <Zap className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="h-6 flex items-center">
+                    {savings > 0 && (
+                      <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium">
+                        Partnership -{savings}%
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
 
         {/* Right column - Calculator */}
         <div className="p-6 md:p-8 lg:w-1/2 lg:border-l border-border/50">
-          <PricingCalculator hourlyRate={110} />
+          <PricingCalculator 
+            hourlyRate={110} 
+            months={months}
+            daysPerWeek={daysPerWeek}
+            onMonthsChange={setMonths}
+            onDaysPerWeekChange={setDaysPerWeek}
+          />
         </div>
       </div>
     </Card>
   )
 }
-
-// Testimonial data from the existing testimonials section
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Anna-Mari Jääskeläinen",
-    role: "Product Manager",
-    company: "Helsinki",
-    content: "Goodside offered a trial period for their design service, aimed at designing and implementing improvements to one area of our product. I was very satisfied with the trial period, as it clearly distinguished Goodside from its competitors.",
-    rating: 5,
-    avatar: "/images/client-testimonial-headshots/Anna-Mari Jääskeläinen.jpg"
-  },
-  {
-    id: 2,
-    name: "Kasper Valtonen",
-    role: "Development Lead",
-    company: "Tampere",
-    content: "We wanted to improve our developers ability to develop software that our customers actually like to use. UX/UI training by Goodside UX/UI professionals really made the difference!",
-    rating: 5,
-    avatar: "/images/client-testimonial-headshots/Kasper Valtonen.jpg"
-  },
-  {
-    id: 3,
-    name: "Jarkko Kähkönen",
-    role: "Project Manager",
-    company: "Fuengirola",
-    content: "The employees of The Goodside handled the task brilliantly, and the outcome of the UX design work was excellent. Everything was done on schedule, as agreed, and in an honest and straightforward manner.",
-    rating: 5,
-    avatar: "/images/client-testimonial-headshots/Jarkko Kähkönen.jpg"
-  },
-  {
-    id: 4,
-    name: "Teemu Toroi",
-    role: "Business Owner",
-    company: "Finland",
-    content: "Things work smoothly with Janne, communication is straightforward and promises are kept. Excellent price/quality ratio.",
-    rating: 5,
-    avatar: "/images/client-testimonial-headshots/Teemu Toroi.jpg"
-  }
-]
 
 export function PricingSection() {
   return (
@@ -421,26 +319,24 @@ export function PricingSection() {
         >
           <SinglePricingCard
             title="Strategic design partner"
-            subtitle="Professional design consultation to elevate your digital products and user experience"
+            subtitle="Transform your SaaS product with strategic design thinking and proven methodologies that drive business growth"
             price={{
               current: "110€/hour"
             }}
             benefits={[]}
             features={[
-              { text: "Expert UX/UI guidance and strategy", icon: Target },
-              { text: "User research and usability testing", icon: Users },
-              { text: "Design system development", icon: Palette },
-              { text: "Rapid prototyping and validation", icon: Zap },
-              { text: "Team training and workshops", icon: MessageSquare }
+              { text: "Strategic product positioning & market differentiation", icon: Target },
+              { text: "User research & data-driven insights", icon: Users },
+              { text: "Complete design system development & implementation", icon: Palette },
+              { text: "Conversion-focused UX optimization", icon: Zap },
+              { text: "Team workshops & strategic design consulting", icon: MessageSquare }
             ]}
-            featuresTitle="What's Included"
+            featuresTitle="Strategic Design Services"
             primaryButton={{
               text: "Book Consultation",
               icon: MessageSquare,
               href: "#contact"
             }}
-            testimonials={testimonials}
-            testimonialRotationSpeed={4000}
             maxWidth="max-w-full"
             className="py-0 px-0"
           />

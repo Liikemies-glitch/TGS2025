@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Card } from "@/components/ui/card"
+
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -12,18 +12,51 @@ import { Calendar, TrendingUp, Users, Sparkles, ArrowRight } from "lucide-react"
 interface PricingCalculatorProps {
   hourlyRate?: number
   className?: string
+  months?: number
+  daysPerWeek?: number
+  onMonthsChange?: (months: number) => void
+  onDaysPerWeekChange?: (daysPerWeek: number) => void
 }
 
-export function PricingCalculator({ hourlyRate = 110, className }: PricingCalculatorProps) {
+export function PricingCalculator({ 
+  hourlyRate = 110, 
+  className,
+  months: externalMonths,
+  daysPerWeek: externalDaysPerWeek,
+  onMonthsChange,
+  onDaysPerWeekChange
+}: PricingCalculatorProps) {
   const router = useRouter()
-  const [months, setMonths] = useState(3)
-  const [daysPerWeek, setDaysPerWeek] = useState(5)
-  const [hoursPerDay] = useState(8) // Fixed at 8 hours per day
+  
+  // Use external state if provided, otherwise internal state
+  const [internalMonths, setInternalMonths] = useState(3)
+  const [internalDaysPerWeek, setInternalDaysPerWeek] = useState(5)
+  
+  const months = externalMonths ?? internalMonths
+  const daysPerWeek = externalDaysPerWeek ?? internalDaysPerWeek
+  
+  const setMonths = (value: number) => {
+    if (onMonthsChange) {
+      onMonthsChange(value)
+    } else {
+      setInternalMonths(value)
+    }
+  }
+  
+  const setDaysPerWeek = (value: number) => {
+    if (onDaysPerWeekChange) {
+      onDaysPerWeekChange(value)
+    } else {
+      setInternalDaysPerWeek(value)
+    }
+  }
+
+  const [hoursPerDay] = useState(7.5) // Fixed at 7.5 hours per day
   const [totalCost, setTotalCost] = useState(0)
 
   // Calculate total cost
   useEffect(() => {
-    const weeksPerMonth = 4.33 // Average weeks per month
+    const weeksPerMonth = 4 // 4 weeks per month
     const totalHours = months * weeksPerMonth * daysPerWeek * hoursPerDay
     setTotalCost(Math.round(totalHours * hourlyRate))
   }, [months, daysPerWeek, hoursPerDay, hourlyRate])
@@ -81,11 +114,17 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
   const dayOptions = [2, 3, 4, 5] // Minimum 2 days as per business requirement
 
   return (
-    <Card className={`p-6 border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent relative overflow-hidden ${className}`}>
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full blur-xl" />
+    <div className={`relative overflow-hidden ${className}`}>
       
       <div className="relative z-10">
+        {/* Header */}
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold mb-2">Calculate your investment</h3>
+          <p className="text-sm text-muted-foreground">
+            Estimate project costs based on your timeline and schedule needs
+          </p>
+        </div>
+
         <div className="space-y-6">
           {/* Project Duration */}
           <div className="space-y-3">
@@ -138,44 +177,51 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
             </div>
           </div>
 
-          {/* Allocation Percentage */}
-          <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
-            <div className="flex items-center justify-between mb-2">
-              <Label className="flex items-center gap-2 text-sm font-semibold">
-                <TrendingUp className="h-4 w-4 text-primary" />
-                Allocation
-              </Label>
-              <span className="text-lg font-bold text-primary">{allocationPercentage}%</span>
+          {/* Allocation & Cost Summary Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Allocation Percentage */}
+            <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
+              <div className="flex items-center justify-between mb-2">
+                <Label className="flex items-center gap-2 text-sm font-semibold">
+                  <TrendingUp className="h-4 w-4 text-primary" />
+                  Allocation
+                </Label>
+                <span className="text-lg font-bold text-primary">{allocationPercentage}%</span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Based on {daysPerWeek} days/week × 7.5 hours/day
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Based on {daysPerWeek} days/week × 8 hours/day
-            </p>
-          </div>
 
-          {/* Cost Summary */}
-          <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Total hours:</span>
-                <span className="font-medium">{Math.round(months * 4.33 * daysPerWeek * hoursPerDay)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Standard rate:</span>
-                <span className="font-medium">{hourlyRate}€/hour</span>
-              </div>
-              {savings > 0 && (
+            {/* Cost Summary */}
+            <div className="p-4 bg-primary/5 rounded-lg border border-border/50">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-blue-600 dark:text-blue-400 text-sm">Partnership rate:</span>
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
-                    {Math.round(hourlyRate * (1 - savings / 100))}€/hour
-                  </span>
+                  <span className="text-muted-foreground">Total hours:</span>
+                  <span className="font-medium">{Math.round(months * 4 * daysPerWeek * hoursPerDay)}</span>
                 </div>
-              )}
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Standard rate:</span>
+                  <span className="font-medium">{hourlyRate}€/hour</span>
+                </div>
+                <div className="flex justify-between min-h-[1.25rem]">
+                  {savings > 0 ? (
+                    <>
+                      <span className="text-blue-600 dark:text-blue-400 text-sm">Partnership rate:</span>
+                      <span className="font-semibold text-blue-600 dark:text-blue-400">
+                        {Math.round(hourlyRate * (1 - savings / 100))}€/hour
+                      </span>
+                    </>
+                  ) : (
+                    <span></span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Cost Display */}
-          <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+          <div className="p-4 bg-primary/5 rounded-lg border border-border/50">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`${totalCost}-${savings}`}
@@ -186,16 +232,20 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
                 className="space-y-3"
               >
                 <div className="space-y-2">
-                  {savings > 0 && (
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground line-through">
-                        {formatCurrency(totalCost)}
-                      </span>
-                      <span className="text-blue-600 dark:text-blue-400 text-xs">
-                        Partnership Value
-                      </span>
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between text-sm min-h-[1.25rem]">
+                    {savings > 0 ? (
+                      <>
+                        <span className="text-muted-foreground line-through">
+                          {formatCurrency(totalCost)}
+                        </span>
+                        <span className="text-blue-600 dark:text-blue-400 text-xs">
+                          Partnership Value
+                        </span>
+                      </>
+                    ) : (
+                      <span></span>
+                    )}
+                  </div>
 
                   <div className="flex items-center justify-between">
                     <span className="font-semibold">
@@ -218,23 +268,13 @@ export function PricingCalculator({ hourlyRate = 110, className }: PricingCalcul
           {/* Call to Action */}
           <Button className="w-full" size="sm" onClick={handleGetStarted}>
             <Sparkles className="h-4 w-4 mr-2" />
-            Get Started
+            Get detailed quote
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>
 
-          {savings > 0 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center"
-            >
-              <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800 text-xs px-3 py-1">
-                🤝 Long-term Partnership Value: {formatCurrency(totalCost - discountedCost)}
-              </Badge>
-            </motion.div>
-          )}
+
         </div>
       </div>
-    </Card>
+    </div>
   )
 } 
