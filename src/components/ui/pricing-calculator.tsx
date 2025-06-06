@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { GlowButton } from "@/components/ui/glow-button"
 import { motion, AnimatePresence } from "framer-motion"
 import { Calendar, TrendingUp, Users, Sparkles, ArrowRight, Zap, Target, MessageSquare, Palette } from "lucide-react"
 
@@ -19,128 +20,35 @@ interface AnimatedCtaButtonProps {
 }
 
 const AnimatedCtaButton = ({ isPartnership, children, className, onClick }: AnimatedCtaButtonProps) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [particles, setParticles] = useState<React.ReactElement[]>([]);
-  
-  // Function to create particles when button is hovered in partnership mode
-  const createParticles = () => {
-    if (!isPartnership) return;
-    
-    const newParticles: React.ReactElement[] = [];
-    const colors = ["#3b82f6", "#60a5fa", "#93c5fd", "#2563eb"];
-    
-    for (let i = 0; i < 6; i++) {
-      const size = Math.floor(Math.random() * 6) + 4;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const left = Math.random() * 100;
-      const animDuration = Math.random() * 1 + 1;
-      
-      newParticles.push(
+  // If partnership mode, use GlowButton with enhanced effects
+  if (isPartnership) {
+    return (
+      <motion.div className="relative overflow-hidden rounded-md w-full">
         <motion.div
-          key={`particle-${i}-${Date.now()}`}
-          className="absolute rounded-full z-0 pointer-events-none"
-          style={{
-            width: size,
-            height: size,
-            backgroundColor: color,
-            left: `${left}%`,
-            bottom: "-10%",
-          }}
-          initial={{ opacity: 0.8, y: 0 }}
-          animate={{ 
-            opacity: 0,
-            y: -60 - Math.random() * 20,
-            x: (Math.random() - 0.5) * 30
-          }}
-          transition={{ 
-            duration: animDuration,
-            ease: "easeOut"
-          }}
-          onAnimationComplete={() => {
-            setParticles(prev => prev.filter(p => p.key !== `particle-${i}-${Date.now()}`));
-          }}
-        />
-      );
-    }
-    
-    setParticles(prev => [...prev, ...newParticles]);
-  };
+          className="relative z-10"
+          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <GlowButton
+            glowColor="#3b82f6"
+            className={className}
+            onClick={onClick}
+          >
+            {children}
+          </GlowButton>
+        </motion.div>
+      </motion.div>
+    );
+  }
   
-  // Set up interval for particle creation on hover
-  useEffect(() => {
-    const currentButton = buttonRef.current;
-    
-    if (!currentButton || !isPartnership) return;
-    
-    let interval: NodeJS.Timeout;
-    
-    const handleMouseEnter = () => {
-      interval = setInterval(createParticles, 200);
-    };
-    
-    const handleMouseLeave = () => {
-      clearInterval(interval);
-    };
-    
-    currentButton.addEventListener('mouseenter', handleMouseEnter);
-    currentButton.addEventListener('mouseleave', handleMouseLeave);
-    
-    return () => {
-      currentButton.removeEventListener('mouseenter', handleMouseEnter);
-      currentButton.removeEventListener('mouseleave', handleMouseLeave);
-      clearInterval(interval);
-    };
-  }, [isPartnership, createParticles]);
-  
+  // Regular button for non-partnership
   return (
     <motion.div className="relative overflow-hidden rounded-md w-full">
-      {/* Shimmer effect for partnership mode */}
-      {isPartnership && (
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent"
-          style={{ 
-            backgroundSize: "200% 100%",
-          }}
-          animate={{
-            backgroundPosition: ["100% 0%", "-100% 0%"],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      )}
-      
-      {/* Particles container */}
-      <div className="absolute inset-0 overflow-hidden">
-        {particles}
-      </div>
-      
-      {/* Actual button with scale effect on click */}
       <motion.button
-        ref={buttonRef}
         className={`relative w-full z-10 ${className}`}
         whileTap={{ scale: 0.97 }}
-        whileHover={isPartnership ? { scale: 1.02 } : undefined}
         onClick={onClick}
       >
-        <motion.div 
-          className="absolute inset-0 bg-primary/0 rounded-md"
-          animate={isPartnership ? {
-            boxShadow: [
-              "0 0 0 0 rgba(59, 130, 246, 0)",
-              "0 0 0 8px rgba(59, 130, 246, 0.2)",
-              "0 0 0 0 rgba(59, 130, 246, 0)"
-            ]
-          } : {}}
-          transition={isPartnership ? {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          } : {}}
-        />
-        
         {children}
       </motion.button>
     </motion.div>
@@ -167,7 +75,7 @@ export function PricingCalculator({
   const router = useRouter()
   
   // Use external state if provided, otherwise internal state
-  const [internalMonths, setInternalMonths] = useState(3)
+  const [internalMonths, setInternalMonths] = useState(2)
   const [internalDaysPerWeek, setInternalDaysPerWeek] = useState(5)
   
   const months = externalMonths ?? internalMonths
@@ -308,31 +216,26 @@ export function PricingCalculator({
           <div className="mt-auto">
             <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-6 border border-primary/10">
               <div className="flex items-center justify-between">
-                <div>
+                <div className="flex-1">
                   <p className="text-sm font-medium text-muted-foreground mb-1">Starting at</p>
-                  <div className="flex items-baseline gap-2 min-h-[3rem]">
-                    {savings > 0 ? (
-                      <>
-                        <span className="text-4xl md:text-5xl font-medium text-primary">{discountedRate}€/hour</span>
-                        <span className="text-2xl text-muted-foreground line-through">{hourlyRate}€/hour</span>
-                      </>
-                    ) : (
-                                              <span className="text-4xl md:text-5xl font-medium text-foreground">{hourlyRate}€/hour</span>
-                    )}
-                  </div>
-                  <p className="text-lg text-muted-foreground font-medium mt-1">start in 2 weeks</p>
-                </div>
-                <div className="flex flex-col items-end gap-2 min-h-[4rem]">
-                  <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                    <Zap className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="h-6 flex items-center">
+                  <div className="flex items-baseline gap-3 h-12">
+                    <span className="text-4xl md:text-5xl font-medium text-primary">
+                      {savings > 0 ? discountedRate : hourlyRate}€/hour
+                    </span>
+                    <span className="text-2xl text-muted-foreground min-w-0">
+                      {savings > 0 ? (
+                        <span className="line-through">{hourlyRate}€/hour</span>
+                      ) : (
+                        <span className="opacity-0">{hourlyRate}€/hour</span>
+                      )}
+                    </span>
                     {savings > 0 && (
-                      <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium">
+                      <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium self-baseline">
                         Partnership -{savings}%
                       </div>
                     )}
                   </div>
+                  <p className="text-lg text-muted-foreground font-medium mt-1">start in 2 weeks</p>
                 </div>
               </div>
             </div>
