@@ -216,7 +216,7 @@ export function ProcessSection() {
           <div className="mt-24 bg-gradient-to-br from-muted/30 to-background rounded-3xl border border-border/50 relative overflow-hidden">
             <div className="grid md:grid-cols-2 items-stretch min-h-[400px]">
               {/* Mikki's Image */}
-              <div className="order-2 md:order-1 relative">
+              <div className="order-1 md:order-1 relative">
                 <Image
                   src="/images/team/mikki ai.png"
                   alt="Mikki - AI Design Consultant"
@@ -226,7 +226,7 @@ export function ProcessSection() {
               </div>
 
               {/* Personal Message */}
-              <div className="order-1 md:order-2 text-center md:text-left p-8 flex flex-col justify-center">
+              <div className="order-2 md:order-2 text-left p-8 flex flex-col justify-center">
                 <div className="mb-4">
                   <p className="text-sm text-brand-blue dark:text-brand-blue-light font-medium mb-2">
                     {"👋 Hi, I'm Mikki"}
@@ -245,17 +245,41 @@ export function ProcessSection() {
                 </p>
                 
                 <div className="space-y-3">
-                  <Button size="lg" className="px-8 w-full md:w-auto">
-                    Book a Call with Mikki
-                  </Button>
-                  <div className="flex items-center justify-center md:justify-start gap-4 text-xs text-muted-foreground">
+                  <div className="flex flex-col md:flex-row gap-3">
+                    <Button size="lg" className="px-8 w-full md:w-auto">
+                      Book a Call with Mikki
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="lg" 
+                      className="px-4 w-full md:w-auto flex items-center gap-3"
+                      asChild
+                    >
+                      <a 
+                        href="https://wa.me/0408698887?text=Hi%20Mikki,%20I'd%20like%20to%20discuss%20design%20services%20for%20my%20project" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        <Image
+                          src="/images/team/mikki ai.png"
+                          alt="Mikki"
+                          width={36}
+                          height={36}
+                          className="rounded-full object-cover"
+                        />
+                        <span>Chat on whatsapp</span>
+                        <span>→</span>
+                      </a>
+                    </Button>
+                  </div>
+                  <div className="flex flex-col items-start gap-1 md:flex-row md:items-center md:justify-start md:gap-4 text-xs text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                      <span>Available today</span>
+                      <span>Available on whatsapp</span>
                     </div>
-                    <span>•</span>
+                    <span className="hidden md:inline">•</span>
                     <span>30-minute call</span>
-                    <span>•</span>
+                    <span className="hidden md:inline">•</span>
                     <span>No commitment</span>
                   </div>
                 </div>
