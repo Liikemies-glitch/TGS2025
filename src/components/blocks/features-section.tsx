@@ -152,8 +152,8 @@ export function FeaturesSection() {
               How it works?
             </p>
             <h2 className="text-3xl md:text-4xl font-medium mb-4">
-              Skip the 3-month hiring process<br />
-              and expensive design mistakes
+              Skip the <span className="text-brand-blue dark:text-brand-blue-light">3-month hiring process</span><br />
+              and expensive <span className="text-brand-blue dark:text-brand-blue-light">design mistakes</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Get senior-level designers who understand your business goals, ship quality work consistently, and integrate with your team—without the overhead of full-time hires.

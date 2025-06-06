@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from 'lucide-react';
+import { useRef } from 'react';
+import { FloatingHearts } from "@/components/ui/floating-hearts";
+
 
 interface Testimonial {
   id: string;
@@ -118,6 +121,8 @@ const testimonials: Testimonial[] = [
   }
 ];
 
+
+
 const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <motion.div
@@ -162,8 +167,6 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
     </motion.div>
   );
 };
-
-
 
 const GridTestimonials = () => {
   return (
@@ -210,8 +213,13 @@ const GridTestimonials = () => {
 };
 
 export function TestimonialsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section className="relative py-16 md:py-24 lg:py-32">
+    <section ref={containerRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
+      {/* Floating Hearts */}
+      <FloatingHearts showNumbers={true} />
+      
       <div className="relative mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div 
@@ -225,10 +233,10 @@ export function TestimonialsSection() {
             Client Testimonials
           </p>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl mb-4">
-            What our <span className="text-primary">clients</span> say
+            We Don&apos;t Just <span className="text-brand-blue dark:text-brand-blue-light">Design</span>. We Drive Growth.
           </h2>
           <p className="text-base text-muted-foreground md:text-lg leading-relaxed">
-            Don&apos;t just take our word for it. Here&apos;s what our amazing clients have to say about working with us.
+            When SaaS companies need results, not just pretty interfaces, they choose us. Here&apos;s proof from those who&apos;ve experienced the difference.
           </p>
         </motion.div>
 
