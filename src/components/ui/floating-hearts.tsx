@@ -36,7 +36,7 @@ const defaultHeartsConfig: HeartConfig[] = [
   },
   { 
     id: 2, 
-    size: 173, 
+    size: 200, 
     left: 350, 
     y: 15, 
     zIndex: 10, 
@@ -48,12 +48,12 @@ const defaultHeartsConfig: HeartConfig[] = [
     id: 3, 
     size: 198, 
     left: -700, 
-    y: 77, 
+    y: 56, 
     zIndex: -2, 
     image: '/heart.webp',
     parallaxSpeed: 0.3,
     rotation: 45,
-    opacity: 0.8
+    opacity: 0.6
   },
   { 
     id: 4, 

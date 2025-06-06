@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/blocks/hero-section-4";
 import { ProblemSection } from "@/components/blocks/problem-section";
 import { FeaturesSection } from "@/components/blocks/features-section";
+import { ProcessSection } from "@/components/blocks/process-section";
 import { SolutionSection } from "@/components/blocks/solution-section";
 import { TestimonialsSection } from "@/components/blocks/testimonials-section";
 import { PricingSection } from "@/components/blocks/pricing-section";
@@ -12,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <ProblemSection />
       <FeaturesSection />
+      <ProcessSection />
       <SolutionSection />
       <TestimonialsSection />
       <PricingSection />

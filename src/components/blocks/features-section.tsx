@@ -145,8 +145,8 @@ export function FeaturesSection() {
 
   return (
     <section ref={sectionRef} className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto mb-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-16">
           <div className="text-left">
             <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-6">
               How it works?
@@ -161,7 +161,7 @@ export function FeaturesSection() {
           </div>
         </div>
         
-        <div className="max-w-6xl mx-auto relative">
+        <div className="relative">
           <BentoGrid items={bentoItems} />
           
           {/* CTA in the white space - hidden on mobile */}

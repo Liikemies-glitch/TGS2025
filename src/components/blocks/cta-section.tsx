@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Sparkles, Target, Users, ArrowUpRight } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import Cal, { getCalApi } from "@calcom/embed-react"
 
 // Animated Sparkles Component
@@ -82,13 +82,13 @@ const AnimatedSparkles = () => {
 export function CTASection() {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({"namespace":"cumucore-ux-research-interview"});
+      const cal = await getCalApi({"namespace":"kartoitustapaaminen"});
       cal("ui", {
         "cssVarsPerTheme": {
           "light": {"cal-brand": "#3b82f6", "cal-brand-emphasis": "#2563eb"}, 
           "dark": {"cal-brand": "#60a5fa", "cal-brand-emphasis": "#3b82f6"}
         },
-        "hideEventTypeDetails": true,
+        "hideEventTypeDetails": false,
         "layout": "month_view"
       });
     })();
@@ -135,189 +135,58 @@ export function CTASection() {
             <span className="text-sm font-medium">Ready to Get Started?</span>
           </div>
           
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl">
-            Let&apos;s Build Something
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl leading-tight md:leading-tight lg:leading-tight">
+            {"Let's Build Something"}
             <span className="block bg-gradient-to-r from-primary via-brand-blue to-primary bg-clip-text text-transparent">
               Amazing Together
             </span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Book a free consultation call and let&apos;s discuss how we can transform your ideas into reality. 
-            No commitment, just pure value and insights.
+            Book a free design audit call to identify exactly where design improvements will drive growth. 
+            No commitment, just actionable insights and clear next steps.
           </p>
         </motion.div>
 
-        {/* CTA Content Grid - Side by Side Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Left Side - Benefits Section */}
+        {/* Simple Calendar Embed */}
+        <div className="max-w-4xl mx-auto">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="text-center mb-8"
           >
-            <div className="relative h-[800px] rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm overflow-hidden">
-              {/* Fade-out borders */}
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-border/50 via-border/30 to-transparent" />
-              <div className="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-border/50 via-border/30 to-transparent" />
-              
-              <div className="p-8 h-full flex flex-col justify-between">
-                {/* Mikki's Profile Section - compact, fully rounded, centered */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  className="flex justify-center mb-4"
-                >
-                  <div className="flex items-center gap-3 px-4 py-3 rounded-full border border-border/30">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src="/images/team/Mikki.jpeg" alt="Mikki Aalto-Ylevä" />
-                      <AvatarFallback>MA</AvatarFallback>
-                    </Avatar>
-                    <h4 className="font-semibold text-foreground">Mikki Aalto-Ylevä</h4>
-                  </div>
-                </motion.div>
-
-                {/* Main content area */}
-                <div className="flex-1 flex flex-col justify-center">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-medium mb-4">Intro Meeting Agenda</h3>
-                    <p className="text-muted-foreground">What we&apos;ll cover in our 1-hour consultation call</p>
-                  </div>
-                  
-                  <div className="space-y-6 max-w-lg mx-auto w-full">
-                    {[
-                      {
-                        title: "Your Current Situation",
-                        description: "We&apos;ll discuss your current situation, goals and needs to understand exactly what you&apos;re looking to achieve",
-                        icon: Target,
-                        step: "1"
-                      },
-                      {
-                        title: "The Good Side Offering",
-                        description: "Learn about our solutions and how we can help transform your ideas into reality with our proven approach",
-                        icon: Users,
-                        step: "2"
-                      },
-                      {
-                        title: "Next Steps Forward",
-                        description: "If we&apos;re a good fit, we&apos;ll outline the next steps and how we can continue working together",
-                        icon: ArrowUpRight,
-                        step: "3"
-                      }
-                    ].map((benefit, index) => (
-                      <motion.div 
-                        key={index} 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                        className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/30 backdrop-blur-sm hover:bg-card/70 hover:border-border/50 transition-all duration-300 w-full"
-                      >
-                        <div className="flex-shrink-0">
-                          <div className="relative">
-                            <div className="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center">
-                              <benefit.icon className="h-5 w-5 text-brand-blue" />
-                            </div>
-                            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand-blue text-white text-xs font-bold flex items-center justify-center">
-                              {benefit.step}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-foreground mb-1">{benefit.title}</h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Call duration info and response time - bottom section */}
-                <div className="space-y-4 max-w-lg mx-auto w-full">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.6 }}
-                    className="text-center p-4"
-                  >
-                    <p className="text-sm text-muted-foreground">
-                      <span className="font-medium text-brand-blue">Duration:</span> 1 hour • 
-                      <span className="font-medium text-brand-blue ml-1">Format:</span> Google Meet • 
-                      <span className="font-medium text-brand-blue ml-1">Cost:</span> Completely Free
-                    </p>
-                  </motion.div>
-
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.7 }}
-                    className="text-center p-4"
-                  >
-                    <p className="text-sm text-muted-foreground">
-                      ⚡ Usually responds within 2 hours • 🎯 100% Free consultation
-                    </p>
-                  </motion.div>
-                </div>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Avatar className="h-12 w-12">
+                <AvatarImage src="/images/team/Mikki.jpeg" alt="Mikki Aalto-Ylevä" />
+                <AvatarFallback>MA</AvatarFallback>
+              </Avatar>
+              <div className="text-left">
+                <h3 className="font-semibold text-foreground">Mikki Aalto-Ylevä</h3>
+                <p className="text-sm text-muted-foreground">30 minutes • Free design audit</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Cal.com Embed */}
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="relative h-[800px] rounded-2xl border border-border/50 bg-card shadow-2xl overflow-hidden">
-              {/* Fade-out borders */}
-              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-border/50 via-border/30 to-transparent" />
-              <div className="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-border/50 via-border/30 to-transparent" />
-              
-              {/* Embed Header */}
-              <div className="p-6 border-b border-border/50 bg-black">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="ml-4 text-sm text-gray-300 font-mono">
-                    cal.com/aksel-suokas
-                  </span>
-                </div>
-              </div>
-              
-              {/* Cal.com React Component */}
-              <div className="relative flex-1 bg-card flex flex-col">
-                <div 
-                  className="flex-1"
-                  style={{ 
-                    height: '722px',
-                    overflow: 'auto',
-                    width: '100%'
-                  }}
-                >
-                  <Cal 
-                    namespace="cumucore-ux-research-interview"
-                    calLink="aksel-suokas/cumucore-ux-research-interview"
-                    style={{
-                      width: "100%",
-                      height: "722px",
-                      border: "none"
-                    }}
-                    config={{
-                      layout: "month_view"
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+            <Cal 
+              namespace="kartoitustapaaminen"
+              calLink="aaltoyleva/kartoitustapaaminen"
+              style={{
+                width: "100%",
+                height: "700px",
+                overflow: "scroll"
+              }}
+              config={{
+                layout: "month_view"
+              }}
+            />
           </motion.div>
         </div>
 
