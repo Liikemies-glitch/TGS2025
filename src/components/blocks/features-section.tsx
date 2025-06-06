@@ -166,11 +166,11 @@ export function FeaturesSection() {
           
           {/* CTA in the white space - hidden on mobile */}
           <div className="hidden md:flex absolute bottom-6 right-6 items-center space-x-4">
-            <p className="text-sm text-muted-foreground">Start in 2 weeks</p>
+            <p className="text-sm text-muted-foreground">Explore our expertise</p>
             <Button
               size="lg"
               className="px-5 text-base">
-              <span className="text-nowrap">Schedule Meeting with Mikki</span>
+              <span className="text-nowrap">View Portfolio & Team</span>
             </Button>
           </div>
         </div>
@@ -180,9 +180,9 @@ export function FeaturesSection() {
           <Button
             size="lg"
             className="px-5 text-base">
-            <span className="text-nowrap">Schedule Meeting with Mikki</span>
+            <span className="text-nowrap">View Portfolio & Team</span>
           </Button>
-          <p className="text-sm text-muted-foreground mt-2">Start in 2 weeks</p>
+          <p className="text-sm text-muted-foreground mt-2">Explore our expertise</p>
         </div>
         
       </div>

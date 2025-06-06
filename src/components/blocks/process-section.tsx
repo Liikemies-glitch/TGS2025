@@ -86,8 +86,8 @@ export function ProcessSection() {
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: "0px 0px -100px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
       }
     );
 
@@ -106,8 +106,8 @@ export function ProcessSection() {
           }
         },
         {
-          threshold: 0.3,
-          rootMargin: "0px 0px -100px 0px"
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px"
         }
       );
       
@@ -127,7 +127,7 @@ export function ProcessSection() {
           {/* Header */}
           <div 
             ref={headerRef}
-            className={`text-left mb-20 transition-all duration-1000 ease-out ${
+            className={`text-left mb-20 transition-all duration-400 ease-out ${
               headerVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-12'
@@ -152,12 +152,12 @@ export function ProcessSection() {
               <div
                 key={index}
                 ref={el => { stepRefs.current[index] = el; }}
-                className={`transition-all duration-1000 ease-out ${
+                className={`transition-all duration-500 ease-out ${
                   visibleSteps.has(index) 
                     ? 'opacity-100 translate-y-0 scale-100' 
                     : 'opacity-0 translate-y-16 scale-95'
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                   {/* Text Content */}
@@ -204,7 +204,7 @@ export function ProcessSection() {
                       </div>
                       
                       {/* Subtle animation on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></div>
                     </div>
                   </div>
                 </div>

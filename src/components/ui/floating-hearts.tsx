@@ -18,7 +18,6 @@ interface HeartConfig {
 
 interface FloatingHeartsProps {
   hearts?: HeartConfig[];
-  showNumbers?: boolean;
 }
 
 // Default hearts configuration for parallax effect (positioned relative to center)
@@ -27,10 +26,10 @@ const defaultHeartsConfig: HeartConfig[] = [
     id: 1, 
     size: 138, 
     left: -460, 
-    y: 22, 
+    y: 25, 
     zIndex: -1, 
     image: '/heart.webp',
-    parallaxSpeed: 0.5,
+    parallaxSpeed: 0.8,
     rotation: 15,
     opacity: 0.6
   },
@@ -38,10 +37,10 @@ const defaultHeartsConfig: HeartConfig[] = [
     id: 2, 
     size: 200, 
     left: 350, 
-    y: 15, 
+    y: 22, 
     zIndex: 10, 
     image: '/heart-right.webp',
-    parallaxSpeed: 0.7,
+    parallaxSpeed: 1.0,
     rotation: -20
   },
   { 
@@ -51,7 +50,7 @@ const defaultHeartsConfig: HeartConfig[] = [
     y: 56, 
     zIndex: -2, 
     image: '/heart.webp',
-    parallaxSpeed: 0.3,
+    parallaxSpeed: 0.6,
     rotation: 45,
     opacity: 0.6
   },
@@ -59,32 +58,32 @@ const defaultHeartsConfig: HeartConfig[] = [
     id: 4, 
     size: 138, 
     left: 450, 
-    y: 70, 
+    y: 80, 
     zIndex: 10, 
     image: '/heart-right.webp',
-    parallaxSpeed: 0.6,
+    parallaxSpeed: 0.9,
     rotation: -10
   },
   { 
     id: 5, 
     size: 120, 
-    left: -100, 
-    y: 93, 
+    left: -250, 
+    y: 95, 
     zIndex: 5, 
     image: '/heart.webp',
-    parallaxSpeed: 0.4,
+    parallaxSpeed: 0.7,
     rotation: 25
   }
 ];
 
-const ParallaxHeart = ({ heart, showNumber = false }: { heart: HeartConfig; showNumber?: boolean }) => {
+const ParallaxHeart = ({ heart }: { heart: HeartConfig }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -200 * heart.parallaxSpeed]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -300 * heart.parallaxSpeed]);
 
   return (
     <motion.div
@@ -101,15 +100,19 @@ const ParallaxHeart = ({ heart, showNumber = false }: { heart: HeartConfig; show
       whileInView={{ opacity: heart.opacity ?? 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ 
-        duration: 0.8, 
-        delay: heart.id * 0.2,
+        duration: 0.2, 
         ease: "easeOut"
       }}
     >
       <motion.div
         animate={{ 
           y: [0, -10, 0],
-          rotate: [0, 5, -5, 0]
+          rotate: [0, 5, -5, 0],
+          filter: [
+            'drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)) drop-shadow(0 0 10px rgba(37, 99, 235, 0.15))',
+            'drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 15px rgba(37, 99, 235, 0.2))',
+            'drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)) drop-shadow(0 0 10px rgba(37, 99, 235, 0.15))'
+          ]
         }}
         transition={{ 
           duration: 4 + heart.id * 0.5, 
@@ -130,22 +133,17 @@ const ParallaxHeart = ({ heart, showNumber = false }: { heart: HeartConfig; show
           className="object-contain drop-shadow-lg"
           draggable={false}
         />
-        {/* Number label for easy identification */}
-        {showNumber && (
-          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center border-2 border-white shadow-lg">
-            {heart.id}
-          </div>
-        )}
+
       </motion.div>
     </motion.div>
   );
 };
 
-export function FloatingHearts({ hearts = defaultHeartsConfig, showNumbers = false }: FloatingHeartsProps) {
+export function FloatingHearts({ hearts = defaultHeartsConfig }: FloatingHeartsProps) {
   return (
     <>
       {hearts.map((heart) => (
-        <ParallaxHeart key={heart.id} heart={heart} showNumber={showNumbers} />
+        <ParallaxHeart key={heart.id} heart={heart} />
       ))}
     </>
   );

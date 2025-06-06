@@ -129,7 +129,7 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="relative mb-16"
     >
       <Card className="border border-border/20 bg-card shadow-sm">
@@ -177,7 +177,7 @@ const GridTestimonials = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
+          transition={{ duration: 0.2, delay: index * 0.03 }}
           className="h-full"
         >
           <Card className="h-full transition-all duration-300 hover:shadow-sm border-border/20">
@@ -218,7 +218,7 @@ export function TestimonialsSection() {
   return (
     <section ref={containerRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Floating Hearts */}
-      <FloatingHearts showNumbers={true} />
+      <FloatingHearts />
       
       <div className="relative mx-auto max-w-7xl px-6">
         {/* Header */}
@@ -226,7 +226,7 @@ export function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.2 }}
           className="text-center mx-auto mb-16 max-w-3xl"
         >
           <p className="text-xs text-primary font-medium uppercase tracking-wide mb-4">
