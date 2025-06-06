@@ -154,7 +154,7 @@ const FeaturedTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
               </blockquote>
               
               <div className="space-y-1">
-                <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                <h4 className="font-medium text-foreground">{testimonial.name}</h4>
                 <p className="text-muted-foreground text-sm">
                   {testimonial.role}, {testimonial.company}
                   {testimonial.location && ` • ${testimonial.location}`}

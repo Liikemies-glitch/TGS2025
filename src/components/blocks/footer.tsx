@@ -23,7 +23,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Stay Connected Section */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Stay Connected</h2>
+            <h2 className="text-2xl font-medium">Stay Connected</h2>
             <p className="text-sm text-muted-foreground">
               Join our newsletter for the latest updates and exclusive offers.
             </p>
@@ -43,7 +43,7 @@ export function Footer() {
 
           {/* Quick Links Section */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Quick Links</h2>
+            <h2 className="text-2xl font-medium">Quick Links</h2>
             <nav className="flex flex-col space-y-2">
               <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
                 Home
@@ -65,7 +65,7 @@ export function Footer() {
 
           {/* Contact Us Section */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Contact Us</h2>
+            <h2 className="text-2xl font-medium">Contact Us</h2>
             <div className="space-y-2 text-muted-foreground">
               <p>123 Innovation Street</p>
               <p>Tech City, TC 12345</p>
@@ -76,7 +76,7 @@ export function Footer() {
 
           {/* Follow Us Section */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Follow Us</h2>
+            <h2 className="text-2xl font-medium">Follow Us</h2>
             <div className="flex gap-4">
               <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Facebook className="h-5 w-5" />

@@ -142,7 +142,7 @@ export function CTASection() {
             </span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Book a free design audit call to identify exactly where design improvements will drive growth. 
             No commitment, just actionable insights and clear next steps.
           </p>
@@ -163,7 +163,7 @@ export function CTASection() {
                 <AvatarFallback>MA</AvatarFallback>
               </Avatar>
               <div className="text-left">
-                <h3 className="font-semibold text-foreground">Mikki Aalto-Ylevä</h3>
+                <h3 className="font-medium text-foreground">Mikki Aalto-Ylevä</h3>
                 <p className="text-sm text-muted-foreground">30 minutes • Free design audit</p>
               </div>
             </div>
@@ -199,7 +199,7 @@ export function CTASection() {
           className="text-center mt-16 space-y-4"
         >
           <p className="text-muted-foreground">
-            Trusted by <span className="font-semibold text-foreground">50+</span> companies worldwide
+            Trusted by <span className="font-medium text-foreground">50+</span> companies worldwide
           </p>
           
           {/* Real Company Logos */}

@@ -156,10 +156,10 @@ export function SolutionSection() {
                       )}
                     </div>
                     <div className="space-y-3">
-                      <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+                      <h3 className="pt-0.5 text-xl leading-[1.375rem] font-medium font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
                         {item.title}
                       </h3>
-                      <div className="[&_b]:md:font-semibold [&_strong]:md:font-semibold font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+                      <div className="[&_b]:md:font-medium [&_strong]:md:font-medium font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
                         {item.description}
                       </div>
                     </div>
