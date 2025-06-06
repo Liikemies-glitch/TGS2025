@@ -14,7 +14,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { MobileMenu } from "@/components/ui/mobile-menu"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
 
 export const Navigation = () => {
     return (
@@ -29,41 +28,9 @@ export const Navigation = () => {
                             <Logo />
                         </Link>
 
-                        <div className="hidden md:flex items-center space-x-6">
+                        <div className="hidden md:flex items-center space-x-6 ml-auto mr-8">
                             <NavigationMenu>
                                 <NavigationMenuList>
-                                    <NavigationMenuItem>
-                                        <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-                                        <NavigationMenuContent>
-                                            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                                                <div className="row-span-3">
-                                                    <NavigationMenuLink asChild>
-                                                        <Link
-                                                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                            href="/"
-                                                        >
-                                                            <div className="mb-2 mt-4 text-lg font-medium">
-                                                                The Good Side
-                                                            </div>
-                                                            <p className="text-sm leading-tight text-muted-foreground">
-                                                                Discover our innovative solutions designed to make a positive impact.
-                                                            </p>
-                                                        </Link>
-                                                    </NavigationMenuLink>
-                                                </div>
-                                                <ListItem href="/products/web-apps" title="Web Applications">
-                                                    Modern, responsive web applications built with cutting-edge technology.
-                                                </ListItem>
-                                                <ListItem href="/products/mobile-apps" title="Mobile Apps">
-                                                    Native and cross-platform mobile applications for iOS and Android.
-                                                </ListItem>
-                                                <ListItem href="/products/consulting" title="Consulting">
-                                                    Expert technical consulting and strategic guidance for your projects.
-                                                </ListItem>
-                                            </div>
-                                        </NavigationMenuContent>
-                                    </NavigationMenuItem>
-                                    
                                     <NavigationMenuItem>
                                         <NavigationMenuTrigger>Services</NavigationMenuTrigger>
                                         <NavigationMenuContent>
@@ -136,25 +103,9 @@ export const Navigation = () => {
                             </NavigationMenu>
                         </div>
 
-                        <div className="flex items-center space-x-4">
-                            {/* CTA Button - Desktop */}
-                            <div className="hidden md:block">
-                                <ShimmerButton
-                                    className="px-6 py-2 text-sm font-medium"
-                                    shimmerColor="#ffffff"
-                                    background="hsl(var(--primary))"
-                                    borderRadius="8px"
-                                >
-                                    <Link href="/contact" className="text-white">
-                                        Get Started
-                                    </Link>
-                                </ShimmerButton>
-                            </div>
-                            
-                            <div className="flex items-center space-x-2">
-                                <MobileMenu />
-                                <ThemeToggle />
-                            </div>
+                        <div className="flex items-center space-x-2">
+                            <ThemeToggle />
+                            <MobileMenu />
                         </div>
                     </div>
                 </div>

@@ -22,26 +22,6 @@ interface MenuSection {
 
 const menuSections: MenuSection[] = [
   {
-    title: "Products",
-    items: [
-      {
-        href: "/products/web-apps",
-        title: "Web Applications",
-        description: "Modern, responsive web applications built with cutting-edge technology."
-      },
-      {
-        href: "/products/mobile-apps",
-        title: "Mobile Apps",
-        description: "Native and cross-platform mobile applications for iOS and Android."
-      },
-      {
-        href: "/products/consulting",
-        title: "Consulting",
-        description: "Expert technical consulting and strategic guidance for your projects."
-      }
-    ]
-  },
-  {
     title: "Services",
     items: [
       {
