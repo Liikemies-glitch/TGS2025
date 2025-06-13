@@ -79,7 +79,7 @@ const AnimatedSparkles = () => {
   )
 }
 
-export function CTASection() {
+export function BookAMeetingSection() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({"namespace":"kartoitustapaaminen"});
@@ -95,7 +95,7 @@ export function CTASection() {
   }, [])
 
   return (
-    <section className="relative w-full overflow-hidden bg-background">
+    <section id="book-meeting" className="relative w-full overflow-hidden bg-background">
       {/* Reduced top fade since testimonials section now has bottom fade */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -113,7 +113,7 @@ export function CTASection() {
       />
 
       <motion.div 
-        className="relative container mx-auto px-4 py-24"
+        className="relative container mx-auto px-4 pb-24"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ 

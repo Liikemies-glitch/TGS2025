@@ -2,8 +2,10 @@
 
 import { Badge } from "@/components/ui/badge";
 import { EtherealShadow } from "@/components/ui/ethereal-shadow";
+import { BigCtaSection } from "@/components/blocks/big-cta-section";
 import { Users, Search, HandshakeIcon, RocketIcon } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 
 interface ProcessStep {
   number: string;
@@ -13,6 +15,7 @@ interface ProcessStep {
   badge: string;
   details: string[];
   imageAlt: string;
+  imageSrc: string;
 }
 
 const processSteps: ProcessStep[] = [
@@ -27,7 +30,8 @@ const processSteps: ProcessStep[] = [
       "Identify conversion bottlenecks",
       "Define engagement scope and timeline"
     ],
-    imageAlt: "Free consultation meeting"
+    imageAlt: "Free consultation meeting",
+    imageSrc: "/images/illustrations/design_audit.webp"
   },
   {
     number: "02", 
@@ -40,7 +44,8 @@ const processSteps: ProcessStep[] = [
       "Source additional talent if needed", 
       "Match domain expertise to your needs"
     ],
-    imageAlt: "Expert matching process"
+    imageAlt: "Expert matching process",
+    imageSrc: "/images/illustrations/matching.webp"
   },
   {
     number: "03",
@@ -53,7 +58,8 @@ const processSteps: ProcessStep[] = [
       "Review portfolio and case studies",
       "Confirm communication preferences"
     ],
-    imageAlt: "Meeting with consultant"
+    imageAlt: "Meeting with consultant",
+    imageSrc: "/images/illustrations/interview.webp"
   },
   {
     number: "04",
@@ -66,7 +72,8 @@ const processSteps: ProcessStep[] = [
       "Access to all design tools included",
       "Direct Slack/team integration"
     ],
-    imageAlt: "Consultant working and delivering results"
+    imageAlt: "Consultant working and delivering results",
+    imageSrc: "/images/illustrations/starting.webp"
   }
 ];
 
@@ -98,7 +105,7 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section className="pt-24 pb-1 relative">
+    <section className="pt-24 pb-24 relative">
       {/* Ethereal Shadow Background Effect */}
       <EtherealShadow 
         color="rgba(59, 130, 246, 0.08)"
@@ -177,20 +184,18 @@ export function ProcessSection() {
                     </div>
                   </div>
 
-                  {/* Image Placeholder */}
+                  {/* Process Step Image */}
                   <div className="order-first lg:order-last">
-                    <div className="aspect-[4/3] bg-muted/50 rounded-2xl border border-border/50 flex items-center justify-center relative overflow-hidden group">
-                      {/* Placeholder content */}
-                      <div className="text-center p-8">
-                        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue/10 dark:bg-brand-blue-light/10 flex items-center justify-center">
-                          {step.icon}
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          {step.imageAlt}
-                        </p>
-                      </div>
+                    <div className="aspect-[4/3] rounded-2xl border border-border/50 relative overflow-hidden group">
+                      <Image
+                        src={step.imageSrc}
+                        alt={step.imageAlt}
+                        fill
+                        className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
                       
-                      {/* Subtle animation on hover */}
+                      {/* Subtle overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></div>
                     </div>
                   </div>
@@ -200,6 +205,9 @@ export function ProcessSection() {
           ))}
         </div>
       </div>
+      
+      {/* Integrated CTA Section */}
+      <BigCtaSection />
     </section>
   );
 } 

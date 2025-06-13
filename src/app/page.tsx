@@ -5,7 +5,7 @@ import { ProcessSection } from "@/components/blocks/process-section";
 import { SolutionSection } from "@/components/blocks/solution-section";
 import { TestimonialsSection } from "@/components/blocks/testimonials-section";
 import { PricingSection } from "@/components/blocks/pricing-section";
-import { CTASection } from "@/components/blocks/cta-section";
+import { BookAMeetingSection } from "@/components/blocks/book-a-meeting-section";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <SolutionSection />
       <TestimonialsSection />
       <PricingSection />
-      <CTASection />
+      <BookAMeetingSection />
     </>
   );
 } 

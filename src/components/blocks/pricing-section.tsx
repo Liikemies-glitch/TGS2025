@@ -19,10 +19,10 @@ export function PricingSection() {
             Pricing
           </p>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl mb-4">
-            Simple, <span className="text-brand-blue dark:text-brand-blue-light">transparent</span> pricing
+            Calculate the cost of <span className="text-brand-blue dark:text-brand-blue-light">market leadership</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            No hidden fees, no long-term contracts. Pay for expert UX/UI consultation by the hour.
+            See what it costs to hire a professional full-stack designer to drive your product to market dominance.
           </p>
         </motion.div>
 

@@ -24,7 +24,7 @@ interface FloatingHeartsProps {
 const defaultHeartsConfig: HeartConfig[] = [
   { 
     id: 1, 
-    size: 138, 
+    size: 118, 
     left: -460, 
     y: 25, 
     zIndex: -1, 
@@ -35,7 +35,7 @@ const defaultHeartsConfig: HeartConfig[] = [
   },
   { 
     id: 2, 
-    size: 200, 
+    size: 160, 
     left: 350, 
     y: 22, 
     zIndex: 10, 
@@ -45,7 +45,7 @@ const defaultHeartsConfig: HeartConfig[] = [
   },
   { 
     id: 3, 
-    size: 198, 
+    size: 160, 
     left: -700, 
     y: 56, 
     zIndex: -2, 
@@ -56,7 +56,7 @@ const defaultHeartsConfig: HeartConfig[] = [
   },
   { 
     id: 4, 
-    size: 138, 
+    size: 118, 
     left: 450, 
     y: 80, 
     zIndex: 10, 
@@ -66,7 +66,7 @@ const defaultHeartsConfig: HeartConfig[] = [
   },
   { 
     id: 5, 
-    size: 120, 
+    size: 100, 
     left: -250, 
     y: 95, 
     zIndex: 5, 

@@ -106,7 +106,7 @@ export function FeaturesSection() {
         <div className="h-full flex flex-col justify-start md:absolute md:top-16 md:left-6 md:right-6 md:bottom-6 -mt-6 md:mt-0">
           <h3 className="text-xl md:text-2xl font-medium mb-3 text-foreground">Flexible Contract Options</h3>
           <p className="mb-4">From part-time consulting to full-time team members, we adapt to your needs.</p>
-          <div className="h-56 overflow-hidden">
+          <div className="h-auto md:h-56 overflow-hidden">
             {isVisible && (
               <AnimatedList delay={500}>
                 {contractOptions.map((option, index) => (

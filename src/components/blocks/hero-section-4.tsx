@@ -114,7 +114,7 @@ export function HeroSection() {
                                         asChild
                                         size="lg"
                                         className="px-5 text-base">
-                                        <Link href="#contact">
+                                        <Link href="#book-meeting">
                                             <span className="text-nowrap">Book a meeting</span>
                                         </Link>
                                     </Button>
@@ -124,8 +124,8 @@ export function HeroSection() {
                                         size="lg"
                                         variant="ghost"
                                         className="px-5 text-base">
-                                        <Link href="#case-studies">
-                                            <span className="text-nowrap">View case studies</span>
+                                        <Link href="#pricing">
+                                            <span className="text-nowrap">View pricing</span>
                                         </Link>
                                     </Button>
                                 </div>

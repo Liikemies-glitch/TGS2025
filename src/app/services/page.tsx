@@ -6,7 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CTASection } from "@/components/blocks/cta-section"
+import { BookAMeetingSection } from "@/components/blocks/book-a-meeting-section"
 import { InfiniteSlider } from "@/components/ui/infinite-slider"
 import { ProgressiveBlur } from "@/components/ui/progressive-blur"
 import { 
@@ -440,7 +440,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <CTASection />
+      <BookAMeetingSection />
     </div>
   )
 } 
