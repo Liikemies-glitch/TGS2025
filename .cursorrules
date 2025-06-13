@@ -82,3 +82,12 @@ const { isEnabled } = await draftMode()
 // Handle async params in layouts/pages
 const params = await props.params
 const searchParams = await props.searchParams
+
+### Pushing to github
+
+- When i say "push github" or something similar to it do this:
+- npm run build to check if it build. If not, fix it until it builds.
+- npm run dev and then ask user to check visually that everything works as intended
+- Wait for user to review and ask for permission to proceed.
+- When user gives persmission to proceed
+- execute normal github workload (git add, commit and push to main)

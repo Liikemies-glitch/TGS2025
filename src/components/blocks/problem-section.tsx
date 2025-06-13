@@ -8,8 +8,6 @@ interface Problem {
   imageSrc: string
 }
 
-
-
 const problems: Problem[] = [
   {
     title: "Unprofessional Design",
@@ -35,26 +33,34 @@ const problems: Problem[] = [
 
 export function ProblemSection() {
   const [currentStep, setCurrentStep] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null) // null = not determined yet
   const scrollerRef = useRef<{ destroy: () => void } | null>(null)
 
+  // Mobile detection effect
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024) // lg breakpoint
     }
     
+    // Initial check
     checkMobile()
-    window.addEventListener('resize', checkMobile)
     
+    window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // Scrollama setup effect - only runs when isMobile is determined
   useEffect(() => {
-    // Only initialize Scrollama for desktop
-    if (isMobile) return
+    // Don't initialize if mobile detection hasn't completed or if we're on mobile
+    if (isMobile === null || isMobile) return
+
+    let isComponentMounted = true
 
     // Dynamically import Scrollama to avoid SSR issues
     import('scrollama').then((scrollamaModule) => {
+      // Check if component is still mounted
+      if (!isComponentMounted) return
+
       const scroller = (scrollamaModule as { default: () => { 
         setup: (options: { step: string; offset: number; debug: boolean }) => { 
           onStepEnter: (callback: (response: { index: number }) => void) => void;
@@ -62,34 +68,41 @@ export function ProblemSection() {
         };
         destroy: () => void;
       }}).default()
+      
       scrollerRef.current = scroller
 
-      // Setup Scrollama
-      scroller
-        .setup({
-          step: '.problem-step',
-          offset: 0.5,
-          debug: false, // Set to true for debugging
-        })
-        .onStepEnter((response: { index: number }) => {
-          setCurrentStep(response.index)
-        })
-
-      // Cleanup function
-      return () => {
-        scroller.destroy()
+      // Setup Scrollama with error handling
+      try {
+        scroller
+          .setup({
+            step: '.problem-step',
+            offset: 0.5,
+            debug: false,
+          })
+          .onStepEnter((response: { index: number }) => {
+            setCurrentStep(response.index)
+          })
+      } catch (error) {
+        console.error('Scrollama setup failed:', error)
       }
     }).catch((error: unknown) => {
       console.error('Failed to load scrollama:', error)
     })
 
-    // Cleanup on unmount
+    // Cleanup function
     return () => {
+      isComponentMounted = false
       if (scrollerRef.current) {
         scrollerRef.current.destroy()
+        scrollerRef.current = null
       }
     }
-  }, [isMobile])
+  }, [isMobile]) // Only depend on isMobile
+
+  // Don't render until mobile detection is complete
+  if (isMobile === null) {
+    return <div className="min-h-screen" /> // Placeholder to prevent layout shift
+  }
 
   // Mobile layout - simple sequential problems
   if (isMobile) {
@@ -168,42 +181,40 @@ export function ProblemSection() {
           </div>
 
           {/* Right Column - Sticky Images */}
-          <div className="relative">
-            <div className="sticky top-0 h-screen flex items-center justify-center">
-              {/* Background image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 scale-150"
-                style={{
-                  backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png')"
-                }}
-              ></div>
-              
-              {/* Image Container */}
-              <div className="relative w-full max-w-lg h-[600px] flex items-center justify-center">
-                {problems.map((problem, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out ${
-                      currentStep === index ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    <div className={`w-full h-full ${index < 3 ? 'max-w-56' : 'max-w-md'}`}>
-                      <Image
-                        src={problem.imageSrc}
-                        alt={problem.title}
-                        width={680}
-                        height={680}
-                        className="w-full h-full object-contain"
-                        priority={index === 0}
-                      />
-                    </div>
+          <div className="sticky top-0 h-screen flex items-center justify-center">
+            {/* Background image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 scale-150"
+              style={{
+                backgroundImage: "url('/images/illustrations/sticky-scroll-bg.png')"
+              }}
+            ></div>
+            
+            {/* Image Container */}
+            <div className="relative w-full max-w-lg h-[600px] flex items-center justify-center">
+              {problems.map((problem, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-in-out ${
+                    currentStep === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <div className={`w-full h-full ${index < 3 ? 'max-w-56' : 'max-w-md'}`}>
+                    <Image
+                      src={problem.imageSrc}
+                      alt={problem.title}
+                      width={680}
+                      height={680}
+                      className="w-full h-full object-contain"
+                      priority={index === 0}
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
   )
-} 
+}

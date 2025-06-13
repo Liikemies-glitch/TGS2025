@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, Search, HandshakeIcon, RocketIcon } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 
 interface ProcessStep {
   number: string;
@@ -72,9 +70,7 @@ const processSteps: ProcessStep[] = [
 ];
 
 export function ProcessSection() {
-  const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set());
   const [headerVisible, setHeaderVisible] = useState(false);
-  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,44 +91,25 @@ export function ProcessSection() {
       headerObserver.observe(headerRef.current);
     }
 
-    // Steps observers
-    const stepsObservers = stepRefs.current.map((ref, index) => {
-      if (!ref) return null;
-      
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleSteps(prev => new Set([...prev, index]));
-          }
-        },
-        {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px"
-        }
-      );
-      
-      observer.observe(ref);
-      return observer;
-    });
-
     return () => {
       headerObserver.disconnect();
-      stepsObservers.forEach(observer => observer?.disconnect());
     };
   }, []);
 
   return (
     <section className="py-24 bg-background">
       <div className="mx-auto max-w-6xl px-6">
-          {/* Header */}
-          <div 
-            ref={headerRef}
-            className={`text-left mb-20 transition-all duration-400 ease-out ${
-              headerVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-12'
-            }`}
-          >
+        {/* Sticky Header */}
+        <div 
+          ref={headerRef}
+          className={`sticky bg-background/95 backdrop-blur-sm border-b border-border/20 z-50 pb-8 mb-8 transition-all duration-400 ease-out ${
+            headerVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-12'
+          }`}
+          style={{ top: '120px' }}
+        >
+          <div className="pt-8">
             <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-6">
               Our process
             </p>
@@ -145,20 +122,20 @@ export function ProcessSection() {
               without the hassle of traditional hiring or expensive mistakes.
             </p>
           </div>
+        </div>
 
-          {/* Process Steps */}
-          <div className="space-y-24">
-            {processSteps.map((step, index) => (
-              <div
-                key={index}
-                ref={el => { stepRefs.current[index] = el; }}
-                className={`transition-all duration-500 ease-out ${
-                  visibleSteps.has(index) 
-                    ? 'opacity-100 translate-y-0 scale-100' 
-                    : 'opacity-0 translate-y-16 scale-95'
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
+        {/* Piling Cards Process Steps */}
+        <div className="relative pt-16">
+          {processSteps.map((step, index) => (
+            <div
+              key={index}
+              className={`sticky mb-8 ${index === processSteps.length - 1 ? 'mb-96' : ''}`}
+              style={{ 
+                top: `${380 + (index * 12)}px`,
+                zIndex: index === processSteps.length - 1 ? 60 : index + 1
+              }}
+            >
+              <div className="bg-card/95 backdrop-blur-sm border border-border/50 rounded-3xl p-8 lg:p-12 shadow-lg hover:shadow-xl transition-all duration-300 ease-out">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                   {/* Text Content */}
                   <div className="space-y-6">
@@ -209,87 +186,10 @@ export function ProcessSection() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-24 bg-gradient-to-br from-muted/30 to-background rounded-3xl border border-border/50 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 items-stretch min-h-[400px]">
-              {/* Mikki's Image */}
-              <div className="order-1 md:order-1 relative">
-                <Image
-                  src="/images/team/mikki ai.png"
-                  alt="Mikki - AI Design Consultant"
-                  fill
-                  className="object-cover object-top rounded-l-3xl md:rounded-l-3xl rounded-r-3xl md:rounded-r-none"
-                />
-              </div>
-
-              {/* Personal Message */}
-              <div className="order-2 md:order-2 text-left p-8 flex flex-col justify-center">
-                <div className="mb-4">
-                  <p className="text-sm text-brand-blue dark:text-brand-blue-light font-medium mb-2">
-                    {"👋 Hi, I'm Mikki"}
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    The founder of The Good Side
-                  </p>
-                  <h3 className="text-2xl lg:text-3xl font-medium mb-3">
-                    Ready to transform your design process?
-                  </h3>
-                </div>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  I personally handle every consultation call to understand your unique challenges and match you with the perfect designer. 
-                  <span className="block mt-2 font-medium text-foreground">{"Let's chat about how we can accelerate your growth."}</span>
-                </p>
-                
-                <div className="space-y-3">
-                  <div className="flex flex-col md:flex-row gap-3">
-                    <Button size="lg" className="px-8 w-full md:w-auto">
-                      Book a Call with Mikki
-                    </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="lg" 
-                      className="px-4 w-full md:w-auto flex items-center gap-3"
-                      asChild
-                    >
-                      <a 
-                        href="https://wa.me/0408698887?text=Hi%20Mikki,%20I'd%20like%20to%20discuss%20design%20services%20for%20my%20project" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        <Image
-                          src="/images/team/mikki ai.png"
-                          alt="Mikki"
-                          width={36}
-                          height={36}
-                          className="rounded-full object-cover"
-                        />
-                        <span>Chat on whatsapp</span>
-                        <span>→</span>
-                      </a>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-start gap-1 md:flex-row md:items-center md:justify-start md:gap-4 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                      <span>Available on whatsapp</span>
-                    </div>
-                    <span className="hidden md:inline">•</span>
-                    <span>30-minute call</span>
-                    <span className="hidden md:inline">•</span>
-                    <span>No commitment</span>
-                  </div>
-                </div>
-              </div>
             </div>
-            
-            {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-brand-blue/5 dark:bg-brand-blue-light/5 rounded-full -translate-y-20 translate-x-20"></div>
-          </div>
+          ))}
         </div>
+      </div>
     </section>
   );
 } 
