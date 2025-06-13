@@ -23,8 +23,10 @@ export const Logo: React.FC<LogoProps> = ({
     setMounted(true)
   }, [])
   
-  // Use default logo until mounted to prevent hydration issues
-  const isDark = mounted ? resolvedTheme === 'dark' : false
+  // Default to dark theme to match ThemeProvider defaultTheme="dark"
+  // Light mode: use dark/black logo (visible on light background)
+  // Dark mode: use light/white logo (visible on dark background)
+  const isDark = mounted ? resolvedTheme === 'dark' : true
   const logoSrc = isDark ? '/TGS logo white.webp' : '/TGS logo black.webp'
   const logoAlt = 'The Good Side Logo'
 
@@ -35,7 +37,7 @@ export const Logo: React.FC<LogoProps> = ({
         alt={logoAlt}
         width={width}
         height={height}
-        className="transition-opacity duration-200 object-contain"
+        className="object-contain transition-all duration-300"
         priority
         style={{
           filter: 'none',

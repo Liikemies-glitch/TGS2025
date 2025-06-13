@@ -89,7 +89,7 @@ export function FeaturesSection() {
                   width={224}
                   height={224}
                   className="w-24 h-24 md:w-56 md:h-56 rounded-lg object-cover shadow-lg"
-                  style={{ zIndex: teamMembers.length - index }}
+                  style={{ zIndex: index + 1 }}
                 />
               ))}
             </div>
@@ -126,10 +126,10 @@ export function FeaturesSection() {
     {
       title: "",
       description: (
-        <div className="h-full flex flex-col justify-start -mt-6">
+        <div className="h-full flex flex-col justify-start">
           <h3 className="text-xl md:text-2xl font-medium mb-3 text-foreground">Talent Sourcing & Placement</h3>
-          <p className="mb-4">Don&apos;t have the right expertise? We source specialized designers and hire them directly on our payroll for your project.</p>
-          <div className="flex flex-wrap gap-1">
+          <p className="mb-6">Don&apos;t have the right expertise? We source specialized designers and hire them directly on our payroll for your project.</p>
+          <div className="flex flex-wrap gap-1 mb-2">
             {designSpecialties.map((specialty, index) => (
               <Badge key={index} variant="secondary" className="text-xs">
                 {specialty}
@@ -156,7 +156,7 @@ export function FeaturesSection() {
               and expensive <span className="text-brand-blue dark:text-brand-blue-light">design mistakes</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Get senior-level designers who understand your business goals, ship quality work consistently, and integrate with your team—without the overhead of full-time hires.
+              Access experienced designers who align with your business objectives, deliver consistent quality, and seamlessly integrate with your team—all without the costs of permanent employment.
             </p>
           </div>
         </div>
@@ -167,20 +167,16 @@ export function FeaturesSection() {
           {/* CTA in the white space - hidden on mobile */}
           <div className="hidden md:flex absolute bottom-6 right-6 items-center space-x-4">
             <p className="text-sm text-muted-foreground">Explore our expertise</p>
-            <Button
-              size="lg"
-              className="px-5 text-base">
-              <span className="text-nowrap">View Portfolio & Team</span>
+            <Button className="h-11 px-8 text-base font-medium">
+              View Portfolio & Team
             </Button>
           </div>
         </div>
 
         {/* Mobile CTA */}
         <div className="md:hidden text-center mt-12">
-          <Button
-            size="lg"
-            className="px-5 text-base">
-            <span className="text-nowrap">View Portfolio & Team</span>
+          <Button className="h-11 px-8 text-base font-medium">
+            View Portfolio & Team
           </Button>
           <p className="text-sm text-muted-foreground mt-2">Explore our expertise</p>
         </div>

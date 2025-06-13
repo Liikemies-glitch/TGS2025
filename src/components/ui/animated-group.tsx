@@ -1,8 +1,7 @@
 'use client';
-import { ReactNode, useEffect, useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { ReactNode, useEffect, useState, useMemo, Children } from 'react';
+import { motion, Variants } from 'motion/react';
 import { cn } from '@/lib/utils';
-import React from 'react';
 
 type PresetType =
   | 'fade'
@@ -41,6 +40,7 @@ const defaultItemVariants: Variants = {
   visible: { opacity: 1 },
 };
 
+// Pre-compute all preset variants to avoid runtime computation
 const presetVariants: Record<
   PresetType,
   { container: Variants; item: Variants }
@@ -166,21 +166,47 @@ function AnimatedGroup({
 }: AnimatedGroupProps) {
   const [isMounted, setIsMounted] = useState(false);
   
+  // Optimize mounting check with minimal effect
   useEffect(() => {
-    setIsMounted(true);
+    // Use requestAnimationFrame to defer mounting until after initial paint
+    const raf = requestAnimationFrame(() => {
+      setIsMounted(true);
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
-  const selectedVariants = preset
-    ? presetVariants[preset]
-    : { container: defaultContainerVariants, item: defaultItemVariants };
-  const containerVariants = variants?.container || selectedVariants.container;
-  const itemVariants = variants?.item || selectedVariants.item;
+  // Memoize variant selection to avoid recomputation
+  const selectedVariants = useMemo(() => {
+    return preset
+      ? presetVariants[preset]
+      : { container: defaultContainerVariants, item: defaultItemVariants };
+  }, [preset]);
 
+  // Memoize final variants to avoid recomputation
+  const containerVariants = useMemo(() => 
+    variants?.container || selectedVariants.container,
+    [variants?.container, selectedVariants.container]
+  );
+  
+  const itemVariants = useMemo(() => 
+    variants?.item || selectedVariants.item,
+    [variants?.item, selectedVariants.item]
+  );
+
+  // Memoize processed children to avoid reprocessing
+  const processedChildren = useMemo(() => 
+    Children.toArray(children),
+    [children]
+  );
+
+  // Render with CSS-only hiding initially to prevent layout shift
   if (!isMounted) {
-    // Render completely hidden on server/initial client render
     return (
-      <div className={cn("opacity-0", className)}>
-        {React.Children.map(children, (child, index) => (
+      <div 
+        className={cn("opacity-0 transition-opacity duration-0", className)}
+        style={{ visibility: 'hidden' }}
+      >
+        {processedChildren.map((child, index) => (
           <div key={index}>
             {child}
           </div>
@@ -196,7 +222,7 @@ function AnimatedGroup({
       variants={containerVariants}
       className={cn(className)}
     >
-      {React.Children.map(children, (child, index) => (
+      {processedChildren.map((child, index) => (
         <motion.div key={index} variants={itemVariants}>
           {child}
         </motion.div>

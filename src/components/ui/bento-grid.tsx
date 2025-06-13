@@ -62,16 +62,16 @@ const getGridArea = (index: number): string => {
 const GridItem = ({ area, icon, title, description, meta, tags, hasPersistentHover, className }: GridItemProps) => {
     return (
         <li className={cn("min-h-[8rem] list-none", area, className)}>
-            <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
-                <GlowingEffect
-                    spread={40}
-                    glow={hasPersistentHover}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.01}
-                    borderWidth={3}
-                />
-                <div className="relative flex h-full flex-col justify-between gap-6 rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+            <div className="relative h-full rounded-[1.25rem] md:rounded-[1.5rem]">
+                <div className="relative flex h-full flex-col justify-between gap-4 rounded-[1.25rem] md:rounded-[1.5rem] border-[0.75px] border-border bg-background p-4 md:p-5 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+                    <GlowingEffect
+                        spread={40}
+                        glow={hasPersistentHover}
+                        disabled={false}
+                        proximity={64}
+                        inactiveZone={0.01}
+                        borderWidth={3}
+                    />
                     <div className="relative flex flex-1 flex-col justify-between gap-3">
                         <div className="flex items-center justify-between">
                             <div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">

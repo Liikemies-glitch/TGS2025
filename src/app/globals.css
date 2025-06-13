@@ -109,6 +109,14 @@
     flex-shrink: 0;
   }
 
+  /* Alternative logo theme switching approach using mask */
+  .logo-theme-mask {
+    -webkit-mask: url('/TGS logo black.webp') no-repeat center / contain;
+    mask: url('/TGS logo black.webp') no-repeat center / contain;
+    background-color: hsl(var(--foreground));
+    transition: background-color 0.3s ease;
+  }
+
   /* Grid Pattern Background */
   .bg-grid-pattern {
     background-image: 
