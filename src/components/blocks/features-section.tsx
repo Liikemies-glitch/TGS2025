@@ -144,7 +144,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-background">
+    <section ref={sectionRef} className="pt-24 pb-40 bg-background">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16">
           <div className="text-left">

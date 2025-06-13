@@ -97,7 +97,7 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section className="py-24 bg-background">
+    <section className="pt-24 pb-1 bg-background">
       <div className="mx-auto max-w-6xl px-6">
         {/* Sticky Header */}
         <div 

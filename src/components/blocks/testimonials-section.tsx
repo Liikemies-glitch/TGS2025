@@ -216,7 +216,7 @@ export function TestimonialsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section ref={containerRef} className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section ref={containerRef} className="relative pt-1 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
       {/* Floating Hearts */}
       <FloatingHearts />
       
