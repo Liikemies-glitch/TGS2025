@@ -1,6 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { EtherealShadow } from "@/components/ui/ethereal-shadow";
 import { Users, Search, HandshakeIcon, RocketIcon } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
@@ -97,17 +98,26 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section className="pt-24 pb-1 bg-background">
+    <section className="pt-24 pb-1 relative">
+      {/* Ethereal Shadow Background Effect */}
+      <EtherealShadow 
+        color="rgba(59, 130, 246, 0.08)"
+        animation={{ scale: 35, speed: 80 }}
+        noise={{ opacity: 0.03, scale: 1.5 }}
+        className="absolute inset-0 z-0"
+        style={{ clipPath: 'inset(0)' }}
+      />
+      
       <div className="mx-auto max-w-6xl px-6">
         {/* Sticky Header */}
         <div 
           ref={headerRef}
-          className={`sticky bg-background/95 backdrop-blur-sm border-b border-border/20 z-50 pb-8 mb-8 transition-all duration-400 ease-out ${
+          className={`sticky border-b border-border/20 pb-8 mb-8 transition-all duration-400 ease-out ${
             headerVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-12'
           }`}
-          style={{ top: '120px' }}
+          style={{ top: '120px', zIndex: 5 }}
         >
           <div className="pt-8">
             <p className="text-xs text-brand-blue dark:text-brand-blue-light font-medium uppercase tracking-wide mb-6">
@@ -132,10 +142,10 @@ export function ProcessSection() {
               className={`sticky mb-8 ${index === processSteps.length - 1 ? 'mb-96' : ''}`}
               style={{ 
                 top: `${380 + (index * 12)}px`,
-                zIndex: index === processSteps.length - 1 ? 60 : index + 1
+                zIndex: index === processSteps.length - 1 ? 15 : 10 + index + 1
               }}
             >
-              <div className="bg-card/95 backdrop-blur-sm border border-border/50 rounded-3xl p-8 lg:p-12 shadow-lg hover:shadow-xl transition-all duration-300 ease-out">
+              <div className="bg-card backdrop-blur-sm border border-border/50 rounded-3xl p-8 lg:p-12 shadow-lg hover:shadow-xl transition-all duration-300 ease-out">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                   {/* Text Content */}
                   <div className="space-y-6">
